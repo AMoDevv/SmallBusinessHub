@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+/*************************************Form Design**********************************/
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-color: #AAB3BF;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: transparent;
+}
+
+/*form styles*/
+#signup {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+#signup fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#signup fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#signup input:focus, #signup textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #0D1826;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#signup .action-button {
+    width: 100px;
+    background: #394E66;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#signup .action-button:hover, #signup .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #365959;
+}
+
+#signup .action-button-previous {
+    width: 100px;
+    background: #AAB3BF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#signup .action-button-previous:hover, #signup .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #A65B4B;
+    color: white;
+}
+
+
+/* Not relevant to this form */
+.dme_link {
+    margin-top: 30px;
+    text-align: center;
+}
+.dme_link a {
+    background: #FFF;
+    font-weight: bold;
+    color: #A65B4B;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+}
+
+.dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+}
+
+/*****************************Form Input CSS*****************************************/
+:root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+.form h1 {
+    font-size:28px;  
+    text-align: center;
+    margin-bottom: 20px;
+}
+h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-field {
+    margin-bottom: 5px;
+}
+
+.form-field label {
+    /* display: block; */
+    color: black;
+    margin-bottom: 5px;
+}
+.form .gender-label{
+    color: black;
+    margin-bottom: 5px;
+    position: relative;
+    float: left;
+    font-weight: bold;
+    line-height: 20px;
+    top:-19px;
+}
+
+.form-gender-field label {
+    /* display: block; */
+    color: #777;
+    margin-bottom: 5px;
+   
+}
+
+span.gender-label {
+    /* display: block; */
+    color: black;
+    margin-bottom: 5px;
+}
+
+.form-gender-field  {
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-field input, select {
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.form-field select {
+    font-size: 14px;
+    color: #777;
+}
+.form-field input[type=date] {
+    font-size: 14px;
+    color: #777; 
+}
+title{
+    font-size: 28px;
+    font-weight: bold;
+}
+.form-field input:focus {
+    outline: none;
+}
+legend {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1in;
+    padding-bottom: 10px;
+}
+.form-field.error input {
+    border-color: var(--error-color);
+}
+
+.form-gender-field.error  {
+    border-color: var(--error-color);
+}
+
+.form-field.success input {
+    border-color: var(--success-color);
+}
+
+.form-gender-field.success  {
+    border-color: var(--success-color);
+}
+
+.form-field small {
+    color: var(--error-color);
+}
+
+.form-gender-field small {
+    color: var(--error-color);
+}
+
+.form .l{
+    position: relative;
+    float:left;
+}
+
+/* button */
+.btn {
+    position: relative;
+    width: 30%;
+    padding: 3%;
+    background: #435C73;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: #2C4459;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+/**********************************Interest CSS***********************************/
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+.lb {
+  cursor: pointer;
+  padding: 20px;;
+ position: relative;
+ left:-380px;
+}
+.row label input[type="checkbox"] {
+  display: none;
+}
+.row label .icon-box {
+  position: relative;
+  display: flex;
+  width: 150px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #435C73;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 21px;
+  transition: 0.5s;
+  user-select: none;
+}
+
+.row label input[type="checkbox"]:checked ~ .icon-box {
+  background: linear-gradient(138deg, #da2c4d, #f8ab37);
+  color: #fff;
+}
+
+.row label .icon-box span {
+  margin: 5px;
+  font-size: 18px;
+}
+
+.container .btn {
+  width: 130px;
+  height: 40px;
+  position: absolute;
+  left: 550px;
+  font-size: 16px;
+  border: 0;
+  outline: none;
+  transition: 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+/****************************Upload Image CSS***************************/
+.p{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.p .wrapper{
+  position: relative;
+  left: 5px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px dashed #c2cdda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.wrapper.active{
+  border: none;
+}
+.wrapper .image{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.wrapper .icon{
+  font-size: 100px;
+  color: #1D2C40;
+}
+.wrapper .text{
+  font-size: 20px;
+  font-weight: 500;
+  color: #1D2C40;
+}
+.wrapper #cancel-btn i{
+  position: absolute;
+  font-size: 20px;
+  right: 15px;
+  top: 15px;
+  color: #435C73;
+  cursor: pointer;
+  display: none;
+}
+.wrapper.active:hover #cancel-btn i{
+  display: block;
+}
+.wrapper #cancel-btn i:hover{
+  color: #1D2C40;
+}
+.wrapper .file-name{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 18px;
+  color: #fff;
+  display: none;
+  background:#435C73;
+}
+.wrapper.active:hover .file-name{
+  display: block;
+}
+input[type=file]::file-selector-button {
+    padding: .6em ;
+    border-radius: .3em;
+    background-color: #A65B4B;
+    border-color: #A65B4B;
+    transition: 1s;
+    color:white;
+    font-size: 14px;
+    position: absolute;
+    left:150px;
+  }
+  
+input[type=file]::file-selector-button:hover {
+    background-color: #73463C;
+    border: #73463C;
+}
+input[type='file'] {
+    color: transparent;
+}
+

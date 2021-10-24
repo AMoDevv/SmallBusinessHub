@@ -1,0 +1,123 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: #F2F2F2;
+}
+
+.svg-icon {
+  width: 3.8em;
+  height: 3.8em;
+  position: relative;
+  stroke-width: 3;
+}
+
+.svg-icon path {
+fill:black; 
+}
+
+.nav {
+  background-color: #6D8BA6;
+  position: absolute;
+  padding: 1em 3em;
+  margin: auto;
+  height: 5.5em;
+  width: 33em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow:
+    1.3px 0.8px 2.4px #d4cceb
+    4.2px 2.7px 8px #d4cceb,
+    19px 12px 36px #d4cceb
+  ;
+  bottom:0px;
+  left:400px;
+ 
+}
+
+.btn {
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  color:black;
+  outline: none;
+  height: 65px;
+  width: 60px;
+  transition: padding 300ms, content 1s 1s;
+}
+
+
+.btn.active {
+  padding-right: 10em;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.btn.feed.active:after {
+  content: "Home";
+  position: absolute;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  bottom: 22.2px;
+  right: 30px;
+  animation: appear ease-out 250ms;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn.stats.active::after {
+  content: "Search";
+  position: absolute;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  bottom: 22.2px;
+  right: 30px;
+  animation: appear ease-out 250ms;
+}
+
+.btn.add.active::after {
+  content: "Post";
+  position: absolute;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  bottom: 22.2px;
+  right: 30px;
+  animation: appear ease-out 250ms;
+}
+
+.btn.profile.active::after {
+  content: "Profile";
+  position: absolute;
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  bottom: 22.2px;
+  right: 30px;
+  animation: appear ease-out 250ms;
+}
