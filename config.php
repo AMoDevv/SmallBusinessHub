@@ -3,8 +3,8 @@
 /* Database credentials. */
 
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'viv');
-define('DB_PASSWORD', 'viv');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'smallbusinesshub');
  
 /* Attempt to connect to MySQL database */
