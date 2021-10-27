@@ -20,7 +20,7 @@ if ($accountType == 1) {
 } else if ($ans == 2) {
     $sql = "SELECT image FROM business_information WHERE account_id = $id";
 }
-// $result = $mysqli->query($sql);
+$result = $mysqli->query($sql);
 
 if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();

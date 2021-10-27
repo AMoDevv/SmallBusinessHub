@@ -2,48 +2,48 @@
 namespace App\Models;
 
 
-class Tags
+class Category
 {
-    protected $tag;
-    protected $post_id;
+    protected $name;
+    protected $description;
 
     // GET METHODS
-    public function getTag()
+    public function getName()
     {
-        return $this->tag;
+        return $this->name;
     }
 
-    public function getPostID()
+    public function getDescription()
     {
-        return $this->post_id;
+        return $this->description;
     }
 
     // SET METHODS
-    public function setTag(string $tag)
+    public function setName(string $name)
     {
-        $this->tag = $tag;
+        $this->name = $name;
     }
 
-    public function setPostID(string $post_id)
+    public function setDescription(string $description)
     {
-        $this->post_id = $post_id;
+        $this->description = $description;
     }
 
     // CRUD OPERATIONS
     public function create(array $data, $mysqli) // Does this need $mysqli?
     {
         // attempt insert query execution
-        $sql = "INSERT INTO tags(
-            tag,
-            post_id
+        $sql = "INSERT INTO category(
+            name,
+            description
         )
         VALUES(
-            '$this->tag',
-            '$this->post_id',
+            '$this->name',
+            '$this->description',
         )";
 
         if (mysqli_query($mysqli, $sql)) {
-            echo nl2br("\nRecords added successfully to tags table.");
+            echo nl2br("\nRecords added successfully to category table.");
             return True;
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
@@ -55,9 +55,9 @@ class Tags
     {
         // attempt SELECT query execution
         $sql = "SELECT
-            tag,
-            post_id
-            FROM tags
+            name,
+            description
+            FROM category
             WHERE save_id = '$id'
         ";
 
@@ -70,16 +70,16 @@ class Tags
         }
     }
 
-    public function getUniqueTags($mysqli)
+    public function getUniqueCategory($mysqli)
     {
         // attempt SELECT query execution
-        $sql = "SELECT DISTINCT(tag) FROM `tags`; ";
+        $sql = "SELECT DISTINCT(name) FROM `category`; ";
 
         $out = array();
         if ($result = $mysqli -> query($sql)) {
             // $obj = $result -> fetch_object();
             while ($row = $result -> fetch_object()) {
-                $row = $row->tag;
+                $row = $row->name;
                 array_push($out, $row);
             }
             $result -> free_result();
@@ -92,15 +92,15 @@ class Tags
     public function update(int $id, $mysqli)
     {
         // attempt insert query execution
-        $sql = "UPDATE tags
+        $sql = "UPDATE category
         SET
-            tag = '$this->tag',
-            post_id = '$this->post_id'
+            name = '$this->name',
+            description = '$this->description'
         WHERE save_id = '$id'
         ";
 
         if (mysqli_query($mysqli, $sql)) {
-            echo nl2br("\nRecords updated successfully to tags table.");
+            echo nl2br("\nRecords updated successfully to category table.");
             return True;
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
@@ -111,12 +111,12 @@ class Tags
     public function delete(int $id, $mysqli)
     {
         // attempt insert query execution
-        $sql = "DELETE FROM tags
+        $sql = "DELETE FROM category
         WHERE save_id = '$id'
         ";
 
         if (mysqli_query($mysqli, $sql)) {
-            echo nl2br("\nRecords updated successfully to tags table.");
+            echo nl2br("\nRecords updated successfully to category table.");
             return True;
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
