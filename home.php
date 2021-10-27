@@ -3,7 +3,7 @@
 session_start();
 // Include the database configuration file  
 require_once 'config.php';
-require_once "navigation.php";
+//require_once "navigation.php";
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
