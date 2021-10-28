@@ -99,6 +99,10 @@ usort($out, function ($a,$b) {
 <body>
     <div class="page-header">
         <h1>Search Page</h1>
+        <form action="search.php" method="GET">
+            <?php echo  '<input name="q" type="text" value="'.$search_term.'">' ?>
+            <button type="submit">Search</button>
+        </form>
 
         <div style="width: 100%; padding: 40px;">
             <h1>Results</h1>
