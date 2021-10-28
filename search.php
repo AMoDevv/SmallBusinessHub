@@ -1,6 +1,7 @@
 <?php
 //Initalize session
 
+use App\Models\BusinessInformation;
 use App\Models\Category;
 use App\Models\Tags;
 
@@ -12,6 +13,7 @@ require_once "./navigation.php";
 require_once "./models/tags-model.php";
 require_once "./models/category-model.php";
 require_once "./models/result.php";
+require_once "./models/business-model.php";
 
 // // Check if the user is logged in, if not then redirect him to login page
 // if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -20,62 +22,60 @@ require_once "./models/result.php";
 // }
 
 $search_term = $_GET["q"];
-// if(){
+// if( no $search ){
 //     // Redirect
 // }
+$out = array();
+$tag_rat = 0.7;
+$cat_rat = 0.7;
+$bus_rat = 0.7;
 
 // TAGS
 $tag_search = new Tags();
 $tag_result = $tag_search->getUniqueTags($mysqli);
 // Sort by tag match
-$tag_out = array();
 foreach ($tag_result as $tag_name) {
     // output data of each row
     $tag = strtolower($tag_name);
     $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
-    if($rat > 0.7) {
-        array_push($tag_out, new Result($tag_name, $rat));
+    if($rat > $tag_rat) {
+        array_push($out, new Result($tag_name, $rat, "Tag"));
     }
 }
-
-usort($tag_out, function ($a,$b) {
-    return $a->getVal()<$b->getVal();
-});
-
-foreach($tag_out as $lis) {
-    echo $lis->getName(). $lis->getVal(). "<br>";
-}
-// Show only top 4
-
-
-
 
 
 // Categories
 $cat_search = new Category();
 $cat_result = $cat_search->getUniqueCategory($mysqli);
 // Sort by tag match
-$cat_out = array();
 foreach ($cat_result as $cat_name) {
     // output data of each row
     $tag = strtolower($cat_name);
     $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
-    if($rat > 0.7) {
-        array_push($cat_out, new Result($cat_name, $rat));
+    if($rat > $cat_rat) {
+        array_push($out, new Result($cat_name, $rat, "Category"));
     }
 }
 
-usort($cat_out, function ($a,$b) {
+
+// Business
+$business_search = new BusinessInformation();
+$business_result = $business_search->getBusinessNames($mysqli);
+// Sort by tag match
+foreach ($business_result as $business) {
+    // output data of each row
+
+    $tag = strtolower($business->business_name);
+    $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
+    if($rat > $bus_rat) {
+        array_push($out, new Result($business->business_name, $rat, "Business"));
+    }
+}
+
+usort($out, function ($a,$b) {
     return $a->getVal()<$b->getVal();
 });
 
-foreach($cat_out as $lis) {
-    echo $lis->getName(). $lis->getVal(). "<br>";
-}
-
-
-$name_search;
-$category_search;
 
 
 ?>
@@ -100,7 +100,21 @@ $category_search;
     <div class="page-header">
         <h1>Search Page</h1>
 
-
+        <div style="width: 100%; padding: 40px;">
+            <h1>Results</h1>
+            <div style='width: 100%;'>
+            <?php
+                foreach($out as $output){
+                    echo "
+                    <div style='width: 33%; float: left;'>
+                    <h1>$output->name</h1>
+                    <p>This is a $output->type</p>
+                    </div>
+                    ";
+                }
+            ?>
+            </div>
+        </div>
 
     </div>
     

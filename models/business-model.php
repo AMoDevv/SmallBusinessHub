@@ -1,9 +1,6 @@
 <?php 
 namespace App\Models;
 
-// Include config file
-require_once "../config.php";
-
 
 class BusinessInformation
 {
@@ -299,13 +296,23 @@ class BusinessInformation
             return False;
         }
     }
-}
 
-$x = new BusinessInformation();
-$y = $x->read(2, $mysqli);
-
-foreach($y as $d){
-    echo $d."<br>";
+    public function getBusinessNames($mysqli)
+    {
+        $sql = "SELECT business_id, business_name FROM business_information;";
+       
+        if ($result = $mysqli -> query($sql)) {
+            $out = array();
+            if($row = $result->fetch_object()){
+                array_push($out, $row);
+            }
+            $result->free_result();
+            return $out;
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
 }
 
 ?>
