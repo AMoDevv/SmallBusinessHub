@@ -2,7 +2,8 @@
 namespace App\Models;
 
 // Include config file
-require_once "../config.php";
+require_once "./models/tags-model.php";
+// require_once "../config.php";
 
 
 class Posts
@@ -96,6 +97,35 @@ class Posts
             $obj = $result -> fetch_object();
             $result -> free_result();
             return $obj;   
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+        }
+    }
+
+    public function postsForBusiness(int $id, $mysqli)
+    {
+        // attempt SELECT query execution
+        $sql = "SELECT
+            post_id,
+            business_id,
+            photo,
+            description,
+            boost,
+            saves
+            FROM posts
+            WHERE business_id = '$id'
+        ";
+
+        $out = array();
+        if ($result = $mysqli -> query($sql)) {
+            // $obj = $result -> fetch_object();
+            while ($row = $result -> fetch_object()) {
+                $var = new Tags();
+                $row->tags = $var->getPostTags($row->post_id, $mysqli);
+                array_push($out, $row);
+            }
+            $result -> free_result();
+            return $out;   
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
         }

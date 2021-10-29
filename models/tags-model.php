@@ -93,6 +93,27 @@ class Tags
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
         }
     }
+    
+    public function getPostTags(int $id,$mysqli)
+    {
+        // attempt SELECT query execution
+        $sql = "SELECT tag
+        FROM tags
+        WHERE post_id = $id
+        ";
+
+        $out = array();
+        if ($result = $mysqli -> query($sql)) {
+            // $obj = $result -> fetch_object();
+            while ($row = $result -> fetch_object()) {
+                array_push($out, $row);
+            }
+            $result -> free_result();
+            return $out;   
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+        }
+    }
 
     public function update(int $id, $mysqli)
     {
