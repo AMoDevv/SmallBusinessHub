@@ -29,7 +29,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body class="bg-white">
-<nav class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"> 
+<nav class="bg-gradient-to-r from-green-400 to-blue-500 "> 
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -76,19 +76,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
      <div>
-     <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 py-6">Spotlight</h2>
-     <div class="grid grid-cols-2 group relative shadow-2xl">
-     
-     <div class="p-3">
-        <div class="flex-1 w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-          <img src="images/deliverit.png" alt="pic" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-        </div>
-      </div>
-        <div>
-          <p>info</p>
-      </div>
+      <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 py-6">Spotlight</h2>
+      <div class="grid grid-cols-2 group relative shadow-2xl">
       
-      </div>
+        <div class="p-3">
+            <div class="flex-1 w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+              <img src="images/deliverit.png" alt="pic" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+            </div>
+          </div>
+            <div>
+              <p>info</p>
+            </div>
+        
+        </div>
       </div>
     </div>  
 
@@ -172,7 +172,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   </div>
 </div>
 
-<footer class="p-10 bg-gradient-to-l from-purple-400 via-pink-500 to-red-500">
+<footer class="p-10 bg-gradient-to-r from-green-400 to-blue-500 ">
   <p> Footer</p>
       </footer> 
 </body>
