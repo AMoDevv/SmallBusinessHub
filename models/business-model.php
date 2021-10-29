@@ -1,9 +1,7 @@
 <?php 
 namespace App\Models;
 
-// Include config file
-require_once "../config.php";
-
+require_once "./models/posts-model.php";
 
 class BusinessInformation
 {
@@ -227,6 +225,7 @@ class BusinessInformation
     {
         // attempt SELECT query execution
         $sql = "SELECT
+            business_id,
             business_name,
             address_street,
             address_district,
@@ -247,6 +246,8 @@ class BusinessInformation
         if ($result = $mysqli -> query($sql)) {
             $obj = $result -> fetch_object();
             $result -> free_result();
+            $posts = new Posts();
+            $obj->posts = $posts->postsForBusiness($obj->business_id, $mysqli);
             return $obj;   
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
@@ -299,13 +300,25 @@ class BusinessInformation
             return False;
         }
     }
-}
 
-$x = new BusinessInformation();
-$y = $x->read(2, $mysqli);
-
-foreach($y as $d){
-    echo $d."<br>";
+    public function getBusinessNames($mysqli)
+    {
+        $sql = "SELECT business_id, business_name, image
+        FROM business_information 
+        ";
+       
+        if ($result = $mysqli -> query($sql)) {
+            $out = array();
+            if($row = $result->fetch_object()){
+                array_push($out, $row);
+            }
+            $result->free_result();
+            return $out;
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
 }
 
 ?>
