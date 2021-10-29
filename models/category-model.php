@@ -73,7 +73,17 @@ class Category
     public function getUniqueCategory($mysqli)
     {
         // attempt SELECT query execution
-        $sql = "SELECT DISTINCT(name) FROM `category`; ";
+        $sql = "SELECT bc.category_id as id, c.name as name, b.photo as photo
+        FROM business_category as bc
+        JOIN category as c
+        ON c.category_id = bc.category_id
+        JOIN (
+            SELECT business_id, max(post_id) as post, photo
+            FROM posts
+            GROUP BY business_id
+        ) as b
+        ON b.business_id = bc.business_id
+        ;";
 
         $out = array();
         if ($result = $mysqli -> query($sql)) {

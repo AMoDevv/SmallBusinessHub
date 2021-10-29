@@ -34,12 +34,12 @@ $bus_rat = 0.7;
 $tag_search = new Tags();
 $tag_result = $tag_search->getUniqueTags($mysqli);
 // Sort by tag match
-foreach ($tag_result as $tag_name) {
+foreach ($tag_result as $tag) {
     // output data of each row
-    $tag = strtolower($tag_name);
-    $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
+    $tag_name = strtolower($tag->tag);
+    $rat = 1 - levenshtein($tag_name, $search_term) / max(strlen($search_term), strlen($tag_name));
     if($rat > $tag_rat) {
-        array_push($out, new Result($tag_name, $rat, "Tag"));
+        array_push($out, new Result($tag->tag, $rat, "Tag", $tag->tag, $tag->photo));
     }
 }
 
@@ -48,12 +48,12 @@ foreach ($tag_result as $tag_name) {
 $cat_search = new Category();
 $cat_result = $cat_search->getUniqueCategory($mysqli);
 // Sort by tag match
-foreach ($cat_result as $cat_name) {
+foreach ($cat_result as $cat) {
     // output data of each row
-    $tag = strtolower($cat_name);
+    $tag = strtolower($cat);
     $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
     if($rat > $cat_rat) {
-        array_push($out, new Result($cat_name, $rat, "Category"));
+        array_push($out, new Result($cat->name, $rat, "Category", $cat->id, $cat->photo));
     }
 }
 
@@ -68,7 +68,7 @@ foreach ($business_result as $business) {
     $tag = strtolower($business->business_name);
     $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
     if($rat > $bus_rat) {
-        array_push($out, new Result($business->business_name, $rat, "Business"));
+        array_push($out, new Result($business->business_name, $rat, "Business", $business->business_id, $business->image));
     }
 }
 
@@ -112,7 +112,9 @@ usort($out, function ($a,$b) {
                     echo "
                     <div style='width: 33%; float: left;'>
                     <h1>$output->name</h1>
+                    <p>$output->photo</p>
                     <p>This is a $output->type</p>
+                    <a href='/SmallBusinessHub/$output->type/$output->id'>'/SmallBusinessHub/$output->type/$output->id'</a>
                     </div>
                     ";
                 }

@@ -299,7 +299,9 @@ class BusinessInformation
 
     public function getBusinessNames($mysqli)
     {
-        $sql = "SELECT business_id, business_name FROM business_information;";
+        $sql = "SELECT business_id, business_name, image
+        FROM business_information 
+        ";
        
         if ($result = $mysqli -> query($sql)) {
             $out = array();

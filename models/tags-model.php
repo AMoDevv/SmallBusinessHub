@@ -73,13 +73,18 @@ class Tags
     public function getUniqueTags($mysqli)
     {
         // attempt SELECT query execution
-        $sql = "SELECT DISTINCT(tag) FROM `tags`; ";
+        $sql = "SELECT a.tag as tag, p.photo as photo
+        FROM posts as p
+        JOIN (
+                SELECT tag, MAX(post_id) as post FROM tags GROUP BY tag
+            ) as a
+        ON p.post_id = a.post; 
+        ";
 
         $out = array();
         if ($result = $mysqli -> query($sql)) {
             // $obj = $result -> fetch_object();
             while ($row = $result -> fetch_object()) {
-                $row = $row->tag;
                 array_push($out, $row);
             }
             $result -> free_result();
