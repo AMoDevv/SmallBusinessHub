@@ -85,11 +85,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                    } elseif ($row["account_type_id"] == 2) //this is a business user
                                    {
                                        $sql = "SELECT business_name FROM business_information WHERE account_id =$account_id";
+                                       $businessIDQuery = $mysqli->query("SELECT business_id FROM business_information WHERE account_id = $account_id");
+                                       $businessID = mysqli_fetch_assoc($businessIDQuery)["business_id"];
                                        $result = $mysqli->query($sql);
    
                                        if ($result->num_rows > 0) {
                                            // user profile was previously created so proceed to home page                                       
                                            $_SESSION["profile_completed"] = true;//keep track whether a profile has been created
+                                           $_SESSION["business_id"] = $businessID; //store business_id since account is a business
                                            header("location: profile.php");
                                        } else { //user profile has not yet been created so redirect to new business page
                                            header("location: business-form.php");
