@@ -4,6 +4,7 @@ session_start();
 // Include the database configuration file  
 require_once 'config.php';
 require_once "navigation.php";
+require_once "./models/posts-model.php";
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -162,6 +163,30 @@ if ($result->num_rows == 1) {
 
             </div>
             <!-- End of profile section -->
+            <div class="container-fluid">
+            <?php
+                    //need to get the current user's ID from Session array
+                    $id = $_SESSION["account_id"];
+
+                    $accountType = $_SESSION["account_type"];
+
+                    if ($accountType == 1) {
+                        // $sql = "SELECT image FROM general_user_information WHERE account_id = $id";
+                        // $result = $mysqli->query($sql);
+
+                        // if ($result->num_rows == 1) {
+                        //     $row = $result->fetch_assoc();
+                        //     echo '<img src="data:image/jpg;base64,' . base64_encode($row['image']) . '" />';
+                        // } else {
+                        //     echo "error";
+                        // }
+                    } else if ($accountType == 2) {
+                        $var = new Posts();
+                        
+                    }
+
+            ?>
+            </div>   
 
         </div>
         <!-- End of container -->
