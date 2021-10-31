@@ -1,6 +1,7 @@
 <?php 
 namespace App\Models;
 
+require_once "./models/posts-model.php";
 
 class BusinessInformation
 {
@@ -224,6 +225,7 @@ class BusinessInformation
     {
         // attempt SELECT query execution
         $sql = "SELECT
+            business_id,
             business_name,
             address_street,
             address_district,
@@ -244,6 +246,8 @@ class BusinessInformation
         if ($result = $mysqli -> query($sql)) {
             $obj = $result -> fetch_object();
             $result -> free_result();
+            $posts = new Posts();
+            $obj->posts = $posts->postsForBusiness($obj->business_id, $mysqli);
             return $obj;   
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
