@@ -147,3 +147,8 @@ img {
     font-weight: 600;
      font-size: 20px;
 }
+
+.post-images{
+    height: 100px;
+    width: 100px;
+}

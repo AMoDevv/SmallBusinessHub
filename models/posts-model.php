@@ -2,8 +2,8 @@
 namespace App\Models;
 
 // Include config file
-require_once "./models/tags-model.php";
-// require_once "../config.php";
+require_once "tags-model.php";
+require_once "config.php";
 
 
 class Posts
