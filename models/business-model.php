@@ -2,6 +2,7 @@
 namespace App\Models;
 
 require_once "./models/posts-model.php";
+use App\Models\Posts as Posts;
 
 class BusinessInformation
 {

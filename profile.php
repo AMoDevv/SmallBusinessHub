@@ -23,7 +23,7 @@ $accountType = $_SESSION["account_type"];
 
 if ($accountType == 1) {
     $sql = "SELECT image FROM general_user_information WHERE account_id = $id";
-} else if ($ans == 2) {
+} else if ($accountType == 2) {
     $sql = "SELECT image FROM business_information WHERE account_id = $id";
 }
 $result = $mysqli->query($sql);
@@ -208,6 +208,8 @@ if ($result->num_rows == 1) {
                                     <img src='$image' class='post-images'>
                                     <br>
                                     <p>$post->description</p>
+                                    <br>
+                                    <button class='like_button' value='$post->post_id' value-liked='false'>Like</button>
                                     </div>";
                         }
                     }
@@ -241,7 +243,7 @@ if ($result->num_rows == 1) {
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="js/profile.js"></script>
+    <script src="./js/profile.js"></script>
 </body>
 
 

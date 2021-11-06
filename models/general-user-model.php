@@ -1,9 +1,6 @@
 <?php 
 namespace App\Models;
 
-// Include config file
-require_once "../config.php";
-
 
 class GeneralUser
 {

@@ -27,16 +27,20 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     {
       $businessID = $_SESSION["business_id"];
       $image = addslashes(file_get_contents($_FILES['uploadedFile']['tmp_name']));
-      $description = str_replace("'", "\'",$_POST['description']);
+      $description = str_replace("'", "'",$_POST['description']);
       $sql = "INSERT INTO posts(
         business_id,
         photo,
-        description
+        description,
+        saves,
+        boost
     )
     VALUES(
         $businessID,
         '$image',
-        '$description'
+        '$description',
+        '0',
+        '0'
     )";
 
 if (mysqli_query($mysqli, $sql)) {
