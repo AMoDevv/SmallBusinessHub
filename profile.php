@@ -1,9 +1,15 @@
 <?php
 //Initalize session
+
+
+
 session_start();
 // Include the database configuration file  
 require_once 'config.php';
 require_once "navigation.php";
+require_once "./models/posts-model.php";
+
+use App\Models\Posts;
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -39,9 +45,21 @@ if ($result->num_rows == 1) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/profile.css">
 
 </head>
+<style>
+.post-images{
+    height: 480px;
+    width:98%;
+}
+.post-divs{
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+</style>
 
 <body>
     <!-- partial:index.partial.html -->
@@ -163,6 +181,41 @@ if ($result->num_rows == 1) {
             </div>
             <!-- End of profile section -->
 
+            <!-- Start of posts grid section -->
+            <div class="container">
+            <div class="row">
+            <?php
+                    //need to get the current user's ID from Session array
+                    $id = $_SESSION["account_id"];
+
+                    $accountType = $_SESSION["account_type"];
+                    
+                    //IF USER IS GENERAL USER
+                    if ($accountType == 1) {
+
+
+                    } 
+                    
+                    //IF USER IS BUSINESS USER
+                    else if ($accountType == 2) {
+                        $businessID = $_SESSION["business_id"];
+                        $var = new Posts();
+                        $posts = $var->postsForBusiness($businessID, $mysqli);
+                        
+                        foreach($posts as $post){
+                            $image = "data:image/jpg;base64,".base64_encode($post->photo);
+                            echo "<div class='col-4 post-divs'>
+                                    <img src='$image' class='post-images'>
+                                    <br>
+                                    <p>$post->description</p>
+                                    </div>";
+                        }
+                    }
+
+            ?>
+            </div>
+            </div>   
+            <!-- End of posts grid section -->
         </div>
         <!-- End of container -->
 
