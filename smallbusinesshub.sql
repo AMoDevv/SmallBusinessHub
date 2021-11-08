@@ -60,7 +60,7 @@ CREATE TABLE `business_information` (
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `business_id` int(11) NOT NULL,
-  `photo` varchar(255) NOT NULL,
+  `photo` longblob NOT NULL,
   `description` varchar(255) NOT NULL,
   `saves` int(11) NOT NULL,
   `boost` int(11) NOT NULL,
