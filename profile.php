@@ -8,8 +8,11 @@ session_start();
 require_once 'config.php';
 require_once "navigation.php";
 require_once "./models/posts-model.php";
+require_once "./models/saves-model.php";
+require_once "./phpscripts/getPost.php";
 
 use App\Models\Posts;
+use App\Models\Saves;
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -201,16 +204,14 @@ if ($result->num_rows == 1) {
                         $businessID = $_SESSION["business_id"];
                         $var = new Posts();
                         $posts = $var->postsForBusiness($businessID, $mysqli);
+                        $saves = new Saves();
                         
                         foreach($posts as $post){
-                            $image = "data:image/jpg;base64,".base64_encode($post->photo);
-                            echo "<div class='col-4 post-divs'>
-                                    <img src='$image' class='post-images'>
-                                    <br>
-                                    <p>$post->description</p>
-                                    <br>
-                                    <button class='like_button' value='$post->post_id' value-liked='false'>Like</button>
-                                    </div>";
+                            echo "<div id='post_$post->post_id'  class='col-4 post-divs'> ";
+
+                            echo get_post($post->post_id, $mysqli);
+
+                            echo "</div>";
                         }
                     }
 

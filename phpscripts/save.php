@@ -13,16 +13,22 @@ use App\Models\Saves;
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['post_id']))
 {
     
-    test($_POST['post_id'], $_POST['liked'], $mysqli);
+    like($_POST['post_id'], $_POST['liked'], $mysqli);
 }
 
-function test($post_id, $liked, $mysqli){
+function like($post_id, $liked, $mysqli){
     echo "TEST";
     $save = new Saves();
     $save->setPostID($post_id);
     $save->setUserID($_SESSION["account_id"]);
     
-    return $save->create([], $mysqli);
+
+    if($liked=='true'){
+        return $save->delete($post_id, $_SESSION["account_id"], $mysqli);
+    } else {
+        return $save->create([], $mysqli);
+    }
+
 }
 
 ?>

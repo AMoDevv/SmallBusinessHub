@@ -54,6 +54,12 @@ class Saves
     // CRUD OPERATIONS
     public function create(array $data, $mysqli) // Does this need $mysqli?
     {
+        if($this->save_exists($this->post_id, $this->user_id, $mysqli)){
+            echo nl2br("\nERROR: Like Exists");
+            return False;
+        }
+
+
         // attempt insert query execution
         $sql = "INSERT INTO saves(
             post_id,
@@ -137,6 +143,25 @@ class Saves
 
             $post = new Posts();
             if($post->update_save($this->post_id, $likes, $mysqli)){
+                return True;
+            } else {
+                return False;
+            }
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
+
+    public function save_exists(int $post_id, int $general_user_id, $mysqli){
+        // attempt insert query execution
+        $sql = "SELECT $post_id FROM saves
+        WHERE post_id = '$post_id' AND
+        general_user_id = '$general_user_id'
+        ";
+
+        if ($result = $mysqli->query($sql)) {
+            if($result->num_rows > 0){
                 return True;
             } else {
                 return False;

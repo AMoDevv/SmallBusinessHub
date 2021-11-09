@@ -22,6 +22,7 @@ require_once "./models/business-model.php";
 // }
 
 $search_term = $_GET["q"];
+$search_term = strtolower($search_term);
 // if( no $search ){
 //     // Redirect
 // }
@@ -109,10 +110,11 @@ usort($out, function ($a,$b) {
             <div style='width: 100%;'>
             <?php
                 foreach($out as $output){
+                    $image = "data:image/jpg;base64,".base64_encode($output->photo);
                     echo "
                     <div style='width: 33%; float: left;'>
                     <h1>$output->name</h1>
-                    <p>$output->photo</p>
+                    <img src='$image' class='post-images'>
                     <p>This is a $output->type</p>
                     <a href='/SmallBusinessHub/$output->type/$output->id'>'/SmallBusinessHub/$output->type/$output->id'</a>
                     </div>
