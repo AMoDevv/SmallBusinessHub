@@ -2,7 +2,8 @@
 namespace App\Models;
 
 // Include config file
-require_once "../config.php";
+require_once "./models/posts-model.php";
+use App\Models\Posts as Posts;
 
 
 class Saves
@@ -32,9 +33,33 @@ class Saves
         $this->user_id = $user_id;
     }
 
+    
+    public function get_likes(int $id, $mysqli)
+    {
+        $count_sql = "SELECT count(*) as c
+            FROM saves
+            WHERE post_id = '$id'
+        ";
+
+        if($result = $mysqli->query($count_sql)) {
+            $row = $result -> fetch_object();
+            echo var_dump($row);
+            return $row->c;
+
+        } else {
+            echo nl2br("\nERROR: Failed to execute $count_sql. " . mysqli_error($mysqli));
+        }
+    }
+
     // CRUD OPERATIONS
     public function create(array $data, $mysqli) // Does this need $mysqli?
     {
+        if($this->save_exists($this->post_id, $this->user_id, $mysqli)){
+            echo nl2br("\nERROR: Like Exists");
+            return False;
+        }
+
+
         // attempt insert query execution
         $sql = "INSERT INTO saves(
             post_id,
@@ -42,12 +67,22 @@ class Saves
         )
         VALUES(
             '$this->post_id',
-            '$this->user_id',
+            '$this->user_id'
         )";
 
         if (mysqli_query($mysqli, $sql)) {
             echo nl2br("\nRecords added successfully to saves table.");
-            return True;
+
+            $likes = $this->get_likes($this->post_id, $mysqli);
+            echo "$likes";
+
+            $post = new Posts();
+            if($post->update_save($this->post_id, $likes, $mysqli)){
+                return True;
+            } else {
+                return False;
+            }
+
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
             return False;
@@ -92,16 +127,45 @@ class Saves
         }
     }
 
-    public function delete(int $id, $mysqli)
+
+    public function delete(int $post_id, int $general_user_id, $mysqli)
     {
         // attempt insert query execution
         $sql = "DELETE FROM saves
-        WHERE save_id = '$id'
+        WHERE post_id = '$post_id' AND
+        general_user_id = '$general_user_id'
         ";
 
         if (mysqli_query($mysqli, $sql)) {
-            echo nl2br("\nRecords updated successfully to saves table.");
-            return True;
+            echo nl2br("\nRecords added successfully to saves table.");
+
+            $likes = $this->get_likes($this->post_id, $mysqli);
+
+            $post = new Posts();
+            if($post->update_save($this->post_id, $likes, $mysqli)){
+                return True;
+            } else {
+                return False;
+            }
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
+
+    public function save_exists(int $post_id, int $general_user_id, $mysqli){
+        // attempt insert query execution
+        $sql = "SELECT $post_id FROM saves
+        WHERE post_id = '$post_id' AND
+        general_user_id = '$general_user_id'
+        ";
+
+        if ($result = $mysqli->query($sql)) {
+            if($result->num_rows > 0){
+                return True;
+            } else {
+                return False;
+            }
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
             return False;

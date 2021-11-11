@@ -4,7 +4,7 @@ session_start();
 // Include config file
 require_once "../config.php";
 
-$message = ''; 
+$message = '';
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 {
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
@@ -27,16 +27,20 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     {
       $businessID = $_SESSION["business_id"];
       $image = addslashes(file_get_contents($_FILES['uploadedFile']['tmp_name']));
-      $description = str_replace("'", "\'",$_POST['description']);
+      $description = str_replace("'", "'",$_POST['description']);
       $sql = "INSERT INTO posts(
         business_id,
         photo,
-        description
+        description,
+        saves,
+        boost
     )
     VALUES(
         $businessID,
         '$image',
-        '$description'
+        '$description',
+        '0',
+        '0'
     )";
 
 if (mysqli_query($mysqli, $sql)) {
@@ -81,6 +85,7 @@ if (mysqli_query($mysqli, $sql)) {
     $message .= 'Error:' . $_FILES['uploadedFile']['error'];
   }
 }
+
 $_SESSION['message'] = $message;
 // header("Location: add.php");
 ?>

@@ -60,7 +60,7 @@ CREATE TABLE `business_information` (
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `business_id` int(11) NOT NULL,
-  `photo` varchar(255) NOT NULL,
+  `photo` longblob NOT NULL,
   `description` varchar(255) NOT NULL,
   `saves` int(11) NOT NULL,
   `boost` int(11) NOT NULL,
@@ -187,6 +187,11 @@ ALTER TABLE `business_category`
   MODIFY `business_category_id` int(11) NOT NULL AUTO_INCREMENT,
   ADD CONSTRAINT `business_category_user_id_FK` FOREIGN KEY (`business_id`) REFERENCES `business_information` (`business_id`),
   ADD CONSTRAINT `business_category_id_FK` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
+
+ALTER TABLE `saves`
+  ADD PRIMARY KEY (`save_id`),
+  MODIFY `save_id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD CONSTRAINT `save_post_id_FK` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`);
 
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`tag_id`),

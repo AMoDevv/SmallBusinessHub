@@ -3,13 +3,14 @@ namespace App\Models;
 
 // Include config file
 require_once "tags-model.php";
-require_once "config.php";
 
+use App\Models\Tags as Tags;
 
 class Posts
 {
     protected $photo;
     protected $description;
+    protected $business_id;
     protected $saves;
     protected $boost;
 
@@ -22,6 +23,11 @@ class Posts
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function getBusinessID()
+    {
+        return $this->business_id;
     }
 
     public function getSaves()
@@ -45,6 +51,11 @@ class Posts
         $this->description = $description;
     }
 
+    public function setBusinessID(string $business_id)
+    {
+        $this->business_id = $business_id;
+    }
+
     public function setSaves(string $saves)
     {
         $this->saves = $saves;
@@ -62,12 +73,14 @@ class Posts
         $sql = "INSERT INTO posts(
             photo,
             description,
+            business_id,
             boost,
             saves,
         )
         VALUES(
             '$this->photo',
             '$this->description',
+            '$this->business_id',
             '$this->boost',
             '$this->saves',
         )";
@@ -86,6 +99,7 @@ class Posts
         // attempt SELECT query execution
         $sql = "SELECT
             photo,
+            business_id,
             description,
             boost,
             saves
@@ -96,7 +110,14 @@ class Posts
         if ($result = $mysqli -> query($sql)) {
             $obj = $result -> fetch_object();
             $result -> free_result();
-            return $obj;   
+            $return = new Posts();
+            $return->setPhoto($obj->photo);
+            $return->setBusinessID($obj->business_id);
+            $return->setDescription($obj->description);
+            $return->setBoost($obj->boost);
+            $return->setSaves($obj->saves);
+
+            return $return;   
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
         }
@@ -167,6 +188,28 @@ class Posts
             return False;
         }
     }
+
+    public function update_save(int $id, $saves, $mysqli)
+    {
+
+        $update_sql = "UPDATE posts
+            SET 
+                saves = '$saves'
+            WHERE post_id = '$id'
+        ";
+            
+        if (mysqli_query($mysqli, $update_sql)) {
+            echo nl2br("\nRecords updated successfully to posts table.");
+            return True;
+        } else {
+            echo nl2br("\nERROR: Failed to execute $update_sql. " . mysqli_error($mysqli));
+            return False;
+        }
+
+
+    }
+
+
 }
 
 ?>

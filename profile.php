@@ -8,8 +8,11 @@ session_start();
 require_once 'config.php';
 require_once "navigation.php";
 require_once "./models/posts-model.php";
+require_once "./models/saves-model.php";
+require_once "./phpscripts/getPost.php";
 
 use App\Models\Posts;
+use App\Models\Saves;
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -23,7 +26,7 @@ $accountType = $_SESSION["account_type"];
 
 if ($accountType == 1) {
     $sql = "SELECT image FROM general_user_information WHERE account_id = $id";
-} else if ($ans == 2) {
+} else if ($accountType == 2) {
     $sql = "SELECT image FROM business_information WHERE account_id = $id";
 }
 $result = $mysqli->query($sql);
@@ -108,7 +111,7 @@ if ($result->num_rows == 1) {
 
                     <h1 class="my-profile-user-name"><b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 
-                    <button class="btn1 my-profile-edit-btn">Edit Profile</button>
+                    <button class="btn1 my-profile-edit-btn" id="editProfileBtn">Edit Profile</button>
 
                     <button class="btn1 my-profile-settings-btn" aria-label="my-profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
 
@@ -192,23 +195,28 @@ if ($result->num_rows == 1) {
                     
                     //IF USER IS GENERAL USER
                     if ($accountType == 1) {
-
+                        echo "<script type='text/javascript'>
+                            document.getElementById('editProfileBtn').classList.add('generalUserEditBtn');
+                        </script>";
 
                     } 
                     
                     //IF USER IS BUSINESS USER
                     else if ($accountType == 2) {
+                        echo "<script type='text/javascript'>
+                            document.getElementById('editProfileBtn').classList.add('businessUserEditBtn');
+                        </script>";
                         $businessID = $_SESSION["business_id"];
                         $var = new Posts();
                         $posts = $var->postsForBusiness($businessID, $mysqli);
+                        $saves = new Saves();
                         
                         foreach($posts as $post){
-                            $image = "data:image/jpg;base64,".base64_encode($post->photo);
-                            echo "<div class='col-4 post-divs'>
-                                    <img src='$image' class='post-images'>
-                                    <br>
-                                    <p>$post->description</p>
-                                    </div>";
+                            echo "<div id='post_$post->post_id'  class='col-4 post-divs'> ";
+
+                            echo get_post($post->post_id, $mysqli);
+
+                            echo "</div>";
                         }
                     }
 
@@ -241,7 +249,7 @@ if ($result->num_rows == 1) {
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="js/profile.js"></script>
+    <script src="./js/profile.js"></script>
 </body>
 
 
