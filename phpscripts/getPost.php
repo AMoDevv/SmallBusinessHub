@@ -23,7 +23,9 @@ function get_post($post_id, $mysqli){
 
     $image = "data:image/jpg;base64,".base64_encode($post->getPhoto());
     echo "<div>
-            <img src='$image' class='post-images'>
+            <a href='view.php?id=$post_id'>  
+                <img src='$image' class='post-images'>
+            </a>
             <br>
             <p>".$post->getDescription()."</p>
             <br>
@@ -36,7 +38,8 @@ function get_post($post_id, $mysqli){
         echo "<button class='like_button' value='$post_id' value-liked='false'>Like</button>";
     }
 
-    echo "</div>";
+    echo $saves->get_likes($post_id, $mysqli);
+    echo "Likes </div>";
 
     
 }
