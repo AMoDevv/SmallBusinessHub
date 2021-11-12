@@ -4,7 +4,7 @@ session_start();
 // Include config file
 require_once "../config.php";
 
-$message = ''; 
+$message = '';
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 {
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
@@ -85,6 +85,7 @@ if (mysqli_query($mysqli, $sql)) {
     $message .= 'Error:' . $_FILES['uploadedFile']['error'];
   }
 }
+
 $_SESSION['message'] = $message;
 // header("Location: add.php");
 ?>

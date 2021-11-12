@@ -95,9 +95,9 @@ class GeneralUser
     {
         // attempt SELECT query execution
         $sql = "SELECT
-            firstName,
-            lastName,
-            dateOfBirth,
+            first_name,
+            last_name,
+            date_of_birth,
             email,
             gender
             FROM general_user_information

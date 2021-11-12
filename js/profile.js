@@ -42,4 +42,11 @@ $(document).ready(() => {
       );
     });
   }
+
+  $('.generalUserEditBtn').click(function(){
+    window.location.href="editGeneralUser.php";
+  });
+  $('.businessUserEditBtn').click(function(){
+    window.location.href="editBusinessUser.php";
+  });
 });

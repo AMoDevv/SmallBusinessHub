@@ -111,7 +111,7 @@ if ($result->num_rows == 1) {
 
                     <h1 class="my-profile-user-name"><b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 
-                    <button class="btn1 my-profile-edit-btn">Edit Profile</button>
+                    <button class="btn1 my-profile-edit-btn" id="editProfileBtn">Edit Profile</button>
 
                     <button class="btn1 my-profile-settings-btn" aria-label="my-profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
 
@@ -195,12 +195,17 @@ if ($result->num_rows == 1) {
                     
                     //IF USER IS GENERAL USER
                     if ($accountType == 1) {
-
+                        echo "<script type='text/javascript'>
+                            document.getElementById('editProfileBtn').classList.add('generalUserEditBtn');
+                        </script>";
 
                     } 
                     
                     //IF USER IS BUSINESS USER
                     else if ($accountType == 2) {
+                        echo "<script type='text/javascript'>
+                            document.getElementById('editProfileBtn').classList.add('businessUserEditBtn');
+                        </script>";
                         $businessID = $_SESSION["business_id"];
                         $var = new Posts();
                         $posts = $var->postsForBusiness($businessID, $mysqli);

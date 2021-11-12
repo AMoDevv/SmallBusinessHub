@@ -18,7 +18,7 @@ div.upload-wrapper {
     left: -9999px;
   }
   
-  input[type="submit"] {
+  #uploadBtn{
     border: 3px solid #555;
     color: white;
     background: #666;
