@@ -26,7 +26,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     if (in_array($fileExtension, $allowedfileExtensions))
     {
       $businessID = $_SESSION["business_id"];
-      $image = addslashes(file_get_contents($_FILES['uploadedFile']['tmp_name']));
+      $image = addslashes(file_get_contents($_POST['uploadedFile']));
       $description = str_replace("'", "'",$_POST['description']);
       $sql = "INSERT INTO posts(
         business_id,

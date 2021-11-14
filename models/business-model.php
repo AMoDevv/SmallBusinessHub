@@ -226,6 +226,7 @@ class BusinessInformation
     {
         // attempt SELECT query execution
         $sql = "SELECT
+            image,
             business_id,
             business_name,
             address_street,

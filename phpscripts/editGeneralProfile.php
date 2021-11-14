@@ -4,7 +4,6 @@ session_start();
 // Include config file
 require_once "../config.php";
 
-if(isset($_POST['editProfileBtn'])){
     $accountID = $_SESSION['account_id'];
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
@@ -28,5 +27,4 @@ if (mysqli_query($mysqli, $sql)) {
   } else {
     echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
   }
-}
 ?>
