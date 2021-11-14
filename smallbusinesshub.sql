@@ -118,7 +118,8 @@ CREATE TABLE `business_category` (
 CREATE TABLE `saves` (
   `save_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `general_user_id` int(11) NOT NULL 
+  `general_user_id` int(11) NOT NULL ,
+  `DateCreated` DATETIME NOT NULL DEFAULT(GETDATE())
 );
 
 CREATE TABLE `tags` (

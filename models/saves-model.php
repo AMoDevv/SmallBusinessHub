@@ -43,7 +43,6 @@ class Saves
 
         if($result = $mysqli->query($count_sql)) {
             $row = $result -> fetch_object();
-            echo var_dump($row);
             return $row->c;
 
         } else {
