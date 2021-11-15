@@ -115,6 +115,27 @@ class Tags
         }
     }
 
+    public function getPostsByTag($tag,$mysqli)
+    {
+        // attempt SELECT query execution
+        $sql = "SELECT post_id
+        FROM tags
+        WHERE tag LIKE '$tag'
+        ";
+
+        $out = array();
+        if ($result = $mysqli -> query($sql)) {
+            // $obj = $result -> fetch_object();
+            while ($row = $result -> fetch_object()) {
+                array_push($out, $row->post_id);
+            }
+            $result -> free_result();
+            return $out;   
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+        }
+    }
+
     public function update(int $id, $mysqli)
     {
         // attempt insert query execution

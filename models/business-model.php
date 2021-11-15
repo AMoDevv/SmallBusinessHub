@@ -256,6 +256,42 @@ class BusinessInformation
         }
     }
 
+    public function readByPostID(int $id, $mysqli)
+    {
+        // attempt SELECT query execution
+        $sql = "SELECT
+            image,
+            business_name,
+            address_street,
+            address_district,
+            address_city,
+            address_number,
+            phone_number,
+            facebook_url,
+            instagram_url,
+            twitter_url,
+            website_url,
+            email,
+            description,
+            subscription_id
+            FROM business_information as b
+            JOIN (
+                SELECT business_id
+                FROM posts
+                WHERE post_id = '$id'
+            ) as c
+            ON b.business_id = c.business_id 
+        ";
+
+        if ($result = $mysqli -> query($sql)) {
+            $obj = $result -> fetch_object();
+            $result -> free_result();
+            return $obj;   
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+        }
+    }
+
     public function update(int $id, $mysqli)
     {
         // attempt insert query execution
