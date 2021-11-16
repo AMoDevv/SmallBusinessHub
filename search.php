@@ -49,9 +49,9 @@ if(!(isset($_GET['business']) || isset($_GET['tags']) || isset($_GET['categories
 
 
 $out = array();
-$tag_rat = 0.7;
-$cat_rat = 0.7;
-$bus_rat = 0.7;
+$tag_rat = 0;
+$cat_rat = 0;
+$bus_rat = 0;
 
 
 if( $no_filter || $tags_filter ){
@@ -63,7 +63,7 @@ if( $no_filter || $tags_filter ){
         // output data of each row
         $tag_name = strtolower($tag->tag);
         $rat = 1 - levenshtein($tag_name, $search_term) / max(strlen($search_term), strlen($tag_name));
-        if($rat > $tag_rat) {
+        if($rat >= $tag_rat) {
             array_push($out, new Result($tag->tag, $rat, "Tag", $tag->tag, $tag->photo));
         }
     }
@@ -77,9 +77,9 @@ if( $no_filter || $categories_filter ){
     // Sort by tag match
     foreach ($cat_result as $cat) {
         // output data of each row
-        $tag = strtolower($cat);
+        $tag = strtolower($cat->name);
         $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
-        if($rat > $cat_rat) {
+        if($rat >= $cat_rat) {
             array_push($out, new Result($cat->name, $rat, "Category", $cat->id, $cat->photo));
         }
     }
@@ -96,7 +96,7 @@ if( $no_filter || $business_filter ){
         
         $tag = strtolower($business->business_name);
         $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
-        if($rat > $bus_rat) {
+        if($rat >= $bus_rat) {
             array_push($out, new Result($business->business_name, $rat, "Business", $business->business_id, $business->image));
         }
     }
@@ -165,7 +165,7 @@ usort($out, function ($a,$b) {
                             echo "
                             <div style='width: 33%; float: left;'>
                             <h1>$output->name</h1>
-                            <a href='/SmallBusinessHub/$output->type/$output->id'>
+                            <a href='/SmallBusinessHub/$output->type.php?q=$output->id'>
                                 <img src='$image' class='post-images'>
                             </a>
                             <p>This is a $output->type</p>

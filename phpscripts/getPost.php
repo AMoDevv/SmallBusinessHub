@@ -23,7 +23,7 @@ function get_post($post_id, $mysqli){
 
     $image = "data:image/jpg;base64,".base64_encode($post->getPhoto());
     echo "<div>
-            <a href='view.php?id=$post_id'>  
+            <a href='/SmallBusinessHub/view.php?id=$post_id'>  
                 <img src='$image' class='post-images'>
             </a>
             <br>

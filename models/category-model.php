@@ -89,7 +89,7 @@ class Category
         if ($result = $mysqli -> query($sql)) {
             // $obj = $result -> fetch_object();
             while ($row = $result -> fetch_object()) {
-                $row = $row->name;
+                // $row = $row->name;
                 array_push($out, $row);
             }
             $result -> free_result();
@@ -98,6 +98,33 @@ class Category
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
         }
     }
+    
+    public function getPostsByCategoryID($id,$mysqli)
+    {
+        // attempt SELECT query execution
+        $sql = "SELECT p.post_id
+        FROM posts as p
+        JOIN (
+            SELECT business_id
+            FROM business_category
+            WHERE category_id = $id
+        ) as c
+        on c.business_id = p.business_id
+        ";
+
+        $out = array();
+        if ($result = $mysqli -> query($sql)) {
+            // $obj = $result -> fetch_object();
+            while ($row = $result -> fetch_object()) {
+                array_push($out, $row->post_id);
+            }
+            $result -> free_result();
+            return $out;   
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+        }
+    }
+
 
     public function update(int $id, $mysqli)
     {
