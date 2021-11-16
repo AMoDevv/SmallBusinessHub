@@ -21,8 +21,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-$search_term = $_GET["q"];
+$search_term = "";
+
+if (isset($_GET["q"])){
+    $search_term = $_GET["q"];
+}
 $search_term = strtolower($search_term);
+
 
 
 $business_filter = false;
@@ -49,9 +54,9 @@ if(!(isset($_GET['business']) || isset($_GET['tags']) || isset($_GET['categories
 
 
 $out = array();
-$tag_rat = 0;
-$cat_rat = 0;
-$bus_rat = 0;
+$tag_rat = 0.7;
+$cat_rat = 0.7;
+$bus_rat = 0.7;
 
 
 if( $no_filter || $tags_filter ){

@@ -1,5 +1,5 @@
 <?php
-//Initialize session
+//Initalize session
 session_start();
 
 // Include the database configuration file  
@@ -7,16 +7,20 @@ require_once 'config.php';
 require_once "navigation.php";
 require_once "./models/posts-model.php";
 require_once "./models/saves-model.php";
-require_once "./models/category-model.php";
+require_once "./models/business-model.php";
 require_once "./phpscripts/getPost.php";
 
-use App\Models\Category;
+use App\Models\BusinessInformation;
+use App\Models\Posts;
+use App\Models\Saves;
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
+//need to get the current user's ID from Session array
+$id = $_SESSION["account_id"];
 
 $accountType = $_SESSION["account_type"];
 
@@ -25,6 +29,9 @@ if (!isset($_GET["q"])) {
     exit;
 }
 
+$businesses = new BusinessInformation();
+
+$business = $businesses->read((int)$_GET["q"], $mysqli);
 
 ?>
 <!DOCTYPE html>
@@ -57,19 +64,44 @@ if (!isset($_GET["q"])) {
     <!-- partial:index.partial.html -->
     <header>
 
+        <div class="c">
+
+            <div class="my-profile">
+
+                <div class="my-profile-image">
+                    <?php
+
+                    echo '<img src="data:image/jpg;base64,' . base64_encode($business->image) . '" />';
+
+                    ?>
+                </div>
+
+                <div class="my-profile-bio">
+                    <p>
+                        <span class="my-profile-real-name">
+                            <?php echo $business->business_name;?>
+                        </span>
+                        <br>
+                        <?php echo $business->description;?>
+                    </p>
+
+                </div>
+
+            </div>
+            <!-- End of profile section -->
+
             <!-- Start of posts grid section -->
             <div class="container">
             <div class="row">
             <?php
-                //need to get the current user's ID from Session array
-
-                $var = new Category();
-                $posts = $var->getPostsByCategoryID($_GET['q'], $mysqli);
+                $var = new Posts();
+                
+                $posts = $var->postsForBusiness($business->business_id, $mysqli);
                 
                 foreach($posts as $post){
-                    echo "<div id='post_$post'  class='col-4 post-divs'> ";
+                    echo "<div id='post_$post->post_id'  class='col-4 post-divs'> ";
 
-                    echo get_post($post, $mysqli);
+                    echo get_post($post->post_id, $mysqli);
 
                     echo "</div>";
                 }
@@ -83,9 +115,7 @@ if (!isset($_GET["q"])) {
 
     </header>
 
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    
     <script src="./js/like_post.js"></script>
 </body>
 
