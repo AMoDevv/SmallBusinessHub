@@ -91,7 +91,7 @@ $accountType = $_SESSION["account_type"];
                     // subscription_id
 
                     $business = $businesses->readByPostID($get_id, $mysqli);
-                    echo "<h1>$business->business_name</h1>";
+                    echo "<a href='business.php?q=$business->business_id'><h1>$business->business_name</h1></a>";
                     echo '<img src="data:image/jpg;base64,' . base64_encode($business->image) . '" /><hr>';
 
                     echo "</div>";

@@ -242,7 +242,7 @@ class BusinessInformation
             description,
             subscription_id
             FROM business_information
-            WHERE account_id = '$id'
+            WHERE business_id = '$id'
         ";
 
         if ($result = $mysqli -> query($sql)) {
@@ -261,6 +261,7 @@ class BusinessInformation
         // attempt SELECT query execution
         $sql = "SELECT
             image,
+            b.business_id as business_id,
             business_name,
             address_street,
             address_district,
