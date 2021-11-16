@@ -101,24 +101,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                       <div class='col-md-12 form-group'>
                       <strong><label for='facebook'>Facebook</label></strong>
                         <input type='text' class='form-control' name='facebook' id='facebook' value='$businessInformation->facebook_url'>
+                        <span class='error' style='display:none' id='facebook_error'><p >Please enter a valid facebook url.</p></span>
                       </div>
                     </div>
                     <div class='row mt-1'>
                       <div class='col-md-12 form-group'>
                       <strong><label for='instagram'>Instagram</label></strong>
                         <input type='text' class='form-control' name='instagram' id='instagram' value='$businessInformation->instagram_url'>
+                        <span class='error' style='display:none' id='instagram_error'><p >Please enter a valid instagram url.</p></span>
                       </div>
                     </div>
                     <div class='row mt-1'>
                       <div class='col-md-12 form-group'>
                       <strong><label for='twitter'>Twitter</label></strong>
                         <input type='text' class='form-control' name='twitter' id='twitter' value='$businessInformation->twitter_url'>
+                        <span class='error' style='display:none' id='twitter_error'><p >Please enter a valid twitter url.</p></span>
                       </div>
                     </div>
                     <div class='row mt-1'>
                       <div class='col-md-12 form-group'>
                       <strong><label for='website'>Website</label></strong>
                         <input type='text' class='form-control' name='website' id='website' value='$businessInformation->website_url'>
+                        <span class='error' style='display:none' id='website_error'><p >Please enter a valid url for your website.</p></span>
                       </div>
                     </div>
                     <div class='row mt-1'>
