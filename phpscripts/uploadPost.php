@@ -5,8 +5,6 @@ session_start();
 require_once "../config.php";
 
 $message = '';
-if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
-{
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
   {
     // get details of the uploaded file
@@ -26,7 +24,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     if (in_array($fileExtension, $allowedfileExtensions))
     {
       $businessID = $_SESSION["business_id"];
-      $image = addslashes(file_get_contents($_POST['uploadedFile']));
+      $image = addslashes(file_get_contents($_FILES['uploadedFile']['tmp_name']));
       $description = str_replace("'", "'",$_POST['description']);
       $sql = "INSERT INTO posts(
         business_id,
@@ -47,6 +45,7 @@ if (mysqli_query($mysqli, $sql)) {
   echo($mysqli->insert_id);
   $postID = $mysqli->insert_id;
   $rawTagsString = $_POST['tags'];
+  $rawTagsString = str_replace('#', '',$rawTagsString);
   $tagsArray = explode(' ', $rawTagsString);
   
   foreach ($tagsArray as $tag){
@@ -83,8 +82,8 @@ if (mysqli_query($mysqli, $sql)) {
   {
     $message = 'There is some error in the file upload. Please check the following error.<br>';
     $message .= 'Error:' . $_FILES['uploadedFile']['error'];
+    echo $message;
   }
-}
 
 $_SESSION['message'] = $message;
 // header("Location: add.php");
