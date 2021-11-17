@@ -36,7 +36,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     <?php
         $var = new BusinessInformation();
-        $businessInformation = $var->read($_SESSION["account_id"], $mysqli);
+        $businessInformation = $var->readByAccountID($_SESSION["account_id"], $mysqli);
         echo "<div class='content'>
     
         <div class='container'>
