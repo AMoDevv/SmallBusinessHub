@@ -91,6 +91,8 @@ foreach ($categories as $category) {
 
    if (mysqli_query($mysqli, $sql1)) {
         echo nl2br("\nRecords added successfully to business_category table.");
+               
+        $_SESSION["business_id"] = $gId; //store business_id since account is a business
         header("location: profile.php");
    } else {
         echo $ans;
