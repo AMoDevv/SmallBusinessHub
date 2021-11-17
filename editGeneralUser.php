@@ -83,21 +83,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </div>
                     <div class='row mt-3'>
                       <div class='col-md-12 form-group'>
-                      <strong><label for='flexRadioDefault'>Gender</label></strong>
+                      <strong><label for='gender'>Gender</label></strong>
                       <div class='form-check'>
-                        <input class='form-check-input' type='radio' name='flexRadioDefault' id='male' checked>
+                        <input class='form-check-input' type='radio' name='gender' id='male' checked>
                           <label class='form-check-label' for='male'>
                             Male
                         </label>
                       </div>
                     <div class='form-check'>
-                        <input class='form-check-input' type='radio' name='flexRadioDefault' id='female'>
+                        <input class='form-check-input' type='radio' name='gender' id='female'>
                         <label class='form-check-label' for='female'>
                             Female
                           </label>
                             </div>
                             <div class='form-check'>
-                            <input class='form-check-input' type='radio' name='flexRadioDefault' id='nonBinary'>
+                            <input class='form-check-input' type='radio' name='gender' id='nonBinary'>
                               <label class='form-check-label' for='nonBinary'>
                                 Non-Binary
                             </label>
