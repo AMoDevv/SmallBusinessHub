@@ -78,6 +78,7 @@ $gId = " SELECT business_id FROM business_information WHERE account_id = $id";
 $result = $mysqli->query($gId);
 $row = $result->fetch_assoc();
 $ans = $row['business_id'];
+
 foreach ($categories as $category) {
     $sql1 = "INSERT INTO business_category(
         business_id,
@@ -92,7 +93,7 @@ foreach ($categories as $category) {
    if (mysqli_query($mysqli, $sql1)) {
         echo nl2br("\nRecords added successfully to business_category table.");
                
-        $_SESSION["business_id"] = $gId; //store business_id since account is a business
+        $_SESSION["business_id"] = $ans; //store business_id since account is a business
         header("location: profile.php");
    } else {
         echo $ans;
