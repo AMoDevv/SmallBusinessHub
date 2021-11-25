@@ -67,7 +67,7 @@ if (mysqli_query($mysqli, $sql)) {
   }
 
   echo nl2br("\nPost added successfully to posts table.");
-  // header("location: ../profile.php");
+  header("location: ../profile.php");
 } else {
   echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
 }
