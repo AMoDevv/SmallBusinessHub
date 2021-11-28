@@ -46,6 +46,7 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 
   <style>
     .modal {
@@ -70,6 +71,94 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
 </style>
 
 <body>
+<nav class="bg-gray-900 shadow-2xl"> 
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <a class="flex-shrink-0 flex items-center" href="search.php">          
+          <img class="hidden lg:block h-8 w-auto" src="images/Home.png" alt="home">
+            </a>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex space-x-4 ">
+          <form id='search' action="search.php" method="GET">
+                        <?php echo  '<input name="q" type="text" class=" h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">' ?>
+                        <button type="submit"class=" p-1 rounded bg-blue-700 hover:bg-blue-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
+                    </form>
+            <!-- <input type="text" class="h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">         
+              <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> 
+              </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+        <div class="ml-3 relative">
+          <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+            <a type="button" @mouseover="open = true" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <span class="sr-only">Open user menu</span>
+              <!-- User image needed-->
+              <?php
+                    //need to get the current user's ID from Session array
+                    $id = $_SESSION["account_id"];
+
+                    $accountType = $_SESSION["account_type"];
+
+                    if ($accountType == 1) {
+                        $sql = "SELECT image FROM general_user_information WHERE account_id = $id";
+                        $result = $mysqli->query($sql);
+                        $row = $result->fetch_assoc();
+                        echo'<img class="rounded-full h-8 w-8" src="data:image/jpg;base64,' . base64_encode($row['image']) . '" />';
+                    }
+                        ?>
+              
+                </a>
+
+                <div x-show="open"
+            x-transition:enter.duration.100ms
+            x-transition:leave.duration.1000ms
+            class="absolute right-0 w-48 py-2 mt-2 bg-white bg-gray-100 rounded-md shadow-xl">
+                <div
+                    class="block px-4 py-2 text-sm text-gray-300 font-bold text-gray-700">
+                  <?php  $id = $_SESSION["account_id"];
+
+                            $accountType = $_SESSION["account_type"];
+
+                            if ($accountType == 1) {
+                                $sql = "SELECT first_name, last_name FROM general_user_information WHERE account_id = $id";
+                                $result = $mysqli->query($sql);
+                                if ($result->num_rows == 1) {
+                                    $row = $result->fetch_assoc();
+                                    echo $row['first_name'];
+                                    echo '&nbsp;';
+                                    echo $row['last_name'];
+                                } else {
+                                    echo "error";
+                                }
+                            }
+                                ?>
+                </div>
+                <a href="editgeneraluser.php"
+                    class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
+                    Edit profile
+                </a>
+                <a href="reset-password.php"
+                    class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
+                    Reset Password
+                </a>
+                <a href="logout.php"
+                    class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
+                    Logout
+                </a>
+            </div>
+            
+        </div>
+        
+        </div>
+
+      </div>
+    </div>
+  </div> 
+</nav>
 <div class="c">
     <div class="flex justify-center bg-blue-700 items-center h-auto w-auto">
         
