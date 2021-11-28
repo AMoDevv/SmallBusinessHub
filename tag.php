@@ -57,7 +57,7 @@ $accountType = $_SESSION["account_type"];
 
             <!-- Start of posts grid section -->
             <div class="container">
-            <div class="row">
+            <div class="row grid grid-cols-5">
             <?php
                 //need to get the current user's ID from Session array
 

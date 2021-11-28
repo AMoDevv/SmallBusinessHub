@@ -1,9 +1,8 @@
 body{ 
     width: 100%;
     font: 14px sans-serif; 
-    background-color: #2E3559;
-    background-color:#222C40;
-    background-color:  #1D2C40;
+    --tw-bg-opacity: 1;
+     color: rgba(254, 202, 202, var(--tw-bg-opacity));
     color: #0D1826;
     font-family: 'Lato', sans-serif;
 }

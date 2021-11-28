@@ -23,6 +23,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="css/add-post.css">
     <style>
@@ -39,13 +40,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </style>
 </head>
 
-<body>
+<body class="bg-pink-200">
     <div class="alert alert-danger" role="alert" style="display: none; margin-bottom: 0px;" id="generalAlert">
             Please ensure that all fields are filled out and a picture included to post.
         </div>
-    <form action="phpscripts/uploadPost.php" method="post" enctype="multipart/form-data" id="addPostForm">
+    <form action="phpscripts/uploadPost.php" method="post" enctype="multipart/form-data" id="addPostForm" class="w-1/3 bg-white rounded-3xl mx-auto overflow-hidden shadow-xl p-5 mt-10">
         <div class="form-group post-body">
-            <center><h2>Create a new post</h2></center>
+            <center><h2 class="text-4xl">Create a new post</h2></center>
             <br>
             <label for="description">What's on your mind</label>
             <textarea class="form-control" id="description" name="description" rows="10" cols="50" required></textarea>

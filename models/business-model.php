@@ -379,17 +379,17 @@ class BusinessInformation
         $sql = "SELECT business_id, business_name, image
         FROM business_information 
         ";
-       
+
+        $out = array();
         if ($result = $mysqli -> query($sql)) {
-            $out = array();
-            if($row = $result->fetch_object()){
+            // $obj = $result -> fetch_object();
+            while ($row = $result -> fetch_object()) {
                 array_push($out, $row);
             }
-            $result->free_result();
-            return $out;
+            $result -> free_result();
+            return $out;   
         } else {
             echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
-            return False;
         }
     }
 }

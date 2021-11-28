@@ -10,12 +10,13 @@
 html {
     height: 100%;
     width: 100%;
-    background-color: #AAB3BF;
+    background-color: #cc85a5;
 }
 
 body {
     font-family: 'Lato', sans-serif;
     background: transparent;
+    background-color: #cc85a5;
 }
 
 /*form styles*/
@@ -59,7 +60,7 @@ body {
 /*buttons*/
 #signup .action-button {
     width: 100px;
-    background: #394E66;
+    background: #db2777;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -93,7 +94,7 @@ body {
 .fs-title {
     font-size: 18px;
     text-transform: uppercase;
-    color: #2C3E50;
+    color: #db2777;
     margin-bottom: 10px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -307,7 +308,7 @@ legend {
     position: relative;
     width: 30%;
     padding: 3%;
-    background: #435C73;
+    background: #db2777;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
@@ -342,7 +343,7 @@ legend {
   padding: 20px;
   flex-direction: column;
   align-items: center;
-  background-color: #435C73;
+  background-color: #db2777;
   color: #fff;
   border-radius: 3px;
   font-size: 21px;
@@ -419,7 +420,7 @@ legend {
   font-size: 20px;
   right: 15px;
   top: 15px;
-  color: #435C73;
+  color: #db2777;
   cursor: pointer;
   display: none;
 }
@@ -437,7 +438,7 @@ legend {
   font-size: 18px;
   color: #fff;
   display: none;
-  background:#435C73;
+  background:#db2777;
 }
 .wrapper.active:hover .file-name{
   display: block;

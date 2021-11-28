@@ -27,7 +27,7 @@ session_start();
   <link rel="stylesheet" href="css/form-style.css">
 </head>
 
-<body>
+<body class="">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <form id="signup" class="form" action="business-save.php" method="post" enctype="multipart/form-data">
@@ -63,7 +63,7 @@ session_start();
 
           <div class="form-field">
             <br>
-            <label class="l" style="color: #2C3E50;">
+            <label class="l" style="color: #db2777;">
               <u>Address Details</u>
             </label> <br> <br>
             <label for="address_street" class="l">Address Street:</label>
@@ -99,7 +99,7 @@ session_start();
 
           <div class="form-field">
             <br>
-            <label class="l" style="color: #2C3E50;">
+            <label class="l" style="color: #db2777;">
               <u>Social Media Links</u>
             </label> <br> <br>
             <label for="twitter" class="l">Twitter URL:</label>

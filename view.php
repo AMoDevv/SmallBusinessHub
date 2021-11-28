@@ -5,7 +5,6 @@
 session_start();
 // Include the database configuration file  
 require_once 'config.php';
-require_once "navigation.php";
 require_once "./models/business-model.php";
 require_once "./models/posts-model.php";
 require_once "./models/saves-model.php";
@@ -28,17 +27,6 @@ $accountType = $_SESSION["account_type"];
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>CodePen - Instagram Profile Layout with CSS Grid &amp; Flexbox</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/profile.css">
-
-</head>
 <style>
 .post-images{
     height: 480px;
@@ -60,7 +48,7 @@ $accountType = $_SESSION["account_type"];
 
             <!-- Start of posts grid section -->
             <div class="container">
-            <div class="row">
+            <div class="bg-gray-200 grid grid-cols-3 mt-20 place-content-center p-10 rounded-lg ">
             <?php
                     //need to get the current user's ID from Session array
                     
@@ -69,12 +57,8 @@ $accountType = $_SESSION["account_type"];
                     $posts = new Posts();
                     $post = $posts->read($get_id, $mysqli);
                     $businesses = new BusinessInformation();
-                    
-                    echo "<div id='post_$get_id' style='width:60%;'>";
 
-                    echo get_post($get_id, $mysqli);
-
-                    echo "</div><div id='business' style='width:40%; float: left;'>";
+                    echo "<div id='business' class='col-span-1'style='width:20% ; '>";
 
                     // business_name,
                     // address_street,
@@ -91,8 +75,13 @@ $accountType = $_SESSION["account_type"];
                     // subscription_id
 
                     $business = $businesses->readByPostID($get_id, $mysqli);
-                    echo "<a href='business.php?q=$business->business_id'><h1>$business->business_name</h1></a>";
                     echo '<img src="data:image/jpg;base64,' . base64_encode($business->image) . '" /><hr>';
+                    echo "<a href='business.php?q=$business->business_id'><h1 class='text-4xl'>$business->business_name</h1></a>";
+
+                    echo "</div>";
+                    echo "<div id='post_$get_id' class='col-span-2 text-2xl' style='width:40%; height:60%; '>";
+
+                    echo get_post($get_id, $mysqli);
 
                     echo "</div>";
 
@@ -108,22 +97,6 @@ $accountType = $_SESSION["account_type"];
 
 
     <!-- Nav Menu -->
-    <div class='nav-menu hide' style="display:none;">
-        <div class='container'>
-            <ul>
-                <li>
-                    <a href="reset-password.php">
-                        <span style="color:black; ">Reset Password</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="logout.php">
-                        <span style="color:black;">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="./js/like_post.js"></script>
 </body>

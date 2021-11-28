@@ -112,9 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/register.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-pink-200">
 
 <div class="wrapper br grid-container">
 
@@ -128,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="grid-item">
-        <h2>Get started, it's easy</h2>
+        <h2 class="text-4xl">Get started, it's easy</h2>
         <p>To sign up, please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
@@ -156,8 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
    
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-primary " value="Reset">
+                <input type="submit" class="btn btn-primary bg-pink-400" value="Submit">
+                <input type="reset" class="btn btn-primary bg-pink-400" value="Reset">
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
             

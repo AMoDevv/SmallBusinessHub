@@ -77,31 +77,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Reset Password</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+   <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
-<body>
-    <div class="wrapper">
-        <h2>Reset Password</h2>
+<body class="bg-pink-200">
+<div class="min-h-screen bg-pink-200 flex justify-center items-center">
+    <div class="w-1/5 bg-white rounded-3xl mx-auto overflow-hidden shadow-xl p-5 pt-8">
+        <h2 class="text-4xl font-semibold text-gray-900">Reset Password</h2>
+        <br>
         <p>Please fill out this form to reset your password.</p>
+        <br>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
                 <label>New Password</label>
-                <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
+                <input type="password" name="new_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-pink-600" value="<?php echo $new_password; ?>">
                 <span class="help-block"><?php echo $new_password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control">
+                <input type="password" name="confirm_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-pink-600 ">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="profile.php">Cancel</a>
+                <input type="submit" class="btn btn-primary btn btn-primary mt-20 px-4 py-2 rounded bg-pink-500 hover:bg-pink-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-pink-500 focus:ring-opacity-80 cursor-pointer" value="Submit">
+                <a class="btn btn-link" href="search.php">Cancel</a>
             </div>
         </form>
-    </div>    
+    </div>
+</div>    
 </body>
 </html>

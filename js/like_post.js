@@ -14,16 +14,15 @@ $(document).ready(() => {
         liked: e.target.attributes["value-liked"].value,
       },
     }).done(function (msg) {
-      console.log(msg);
-      $("#post_" + post_id).load(
-        "./phpscripts/getPost.php",
+      $.get(
+        "./view.php",
         {
-          post_id: post_id,
-        },
-        () => {
-          $("#post_" + post_id + " .like_button").on("click", clk);
-        }
-      );
+          id: post_id,
+        }, (msg, stat, err) => {
+          $(".modal-change").html(msg)
+          $(".like_button").on("click", clk);
+        })
     });
+        
   }
 });
