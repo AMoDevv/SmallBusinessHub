@@ -141,7 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class=" selection:text-white justify-center">
   <div class="min-h-screen min-w-screen bg-blue-900 flex justify-center items-center">
     <div class="p-8 flex-1"> 
-      <div class="w-1/2 bg-white p-10 rounded-3xl mx-auto overflow-hidden shadow-xl grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="w-1/2 bg-white p-10 rounded-3xl mx-auto overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div class="">
         <div class="grid-item col-span-1">
             <div id="logo">

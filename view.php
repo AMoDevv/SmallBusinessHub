@@ -79,7 +79,7 @@ $accountType = $_SESSION["account_type"];
                     echo "<a href='business.php?q=$business->business_id'><h1 class='text-4xl'>$business->business_name</h1></a>";
 
                     echo "</div>";
-                    echo "<div id='post_$get_id' class='col-span-2 text-2xl' style='width:40%; height:60%; '>";
+                    echo "<div id='post_$get_id' class='col-span-2 text-2xl'>";
 
                     echo get_post($get_id, $mysqli);
 
