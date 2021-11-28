@@ -91,7 +91,7 @@ $accountType = $_SESSION["account_type"];
                         $var = new Tags();
                         $posts = $var->getPostsByTag($_GET['q'], $mysqli);
                         foreach($posts as $post){
-                            echo "<div class='group relative'> <div id='post_$post'  class='object-contain w-full h-full object-center bg-white aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none'> ";
+                            echo "<div class='group relative '> <div id='post_$post'  class='object-contain w-full h-full object-center bg-white aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none'> ";
 
                             echo get_post($post, $mysqli);
                             
