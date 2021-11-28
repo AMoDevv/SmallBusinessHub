@@ -232,7 +232,7 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
 
             <!-- Start of posts grid section -->
             <!-- <div class="container"> -->
-                <div class="grid grid-cols-5 gap-4 pt-12 px-60 bg-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 pt-12 px-60 bg-gray-100">
                     <?php
    
                         echo "<script type='text/javascript'>
@@ -244,7 +244,7 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
                         $saves = new Saves();
                         
                         foreach($posts as $post){
-                            echo "<div class='group relative'> <div id='post_$post->post_id'  class='object-contain w-full h-full object-center bg-white aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none'> ";
+                            echo "<div class='group relative shadow-2xl'> <div id='post_$post->post_id'  class='object-contain w-full h-full object-center bg-white aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none'> ";
 
                             echo get_post($post->post_id, $mysqli);
 

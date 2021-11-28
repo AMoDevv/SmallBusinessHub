@@ -64,7 +64,6 @@ $accountType = $_SESSION["account_type"];
         
                     <div class="bg-blue-700 text-white flex justify-center p-16 px-80 grid grid-rows-1">
                         <div class="h-40 w-40 container mx-auto">
-                            Tags dont have an image
                         </div>
                         <div class="my-profile-bio">
 

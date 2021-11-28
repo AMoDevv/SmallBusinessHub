@@ -31,17 +31,16 @@ function get_post($post_id, $mysqli){
             <p>".$post->getDescription()."</p>
             </div>
             <br>
+            <div>
             ";
     
     
-    if($saves->save_exists($post_id, $_SESSION["account_id"], $mysqli)) {
-        echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='true'>Unlike</button>";
-    } else {
-        echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='false'>Like</button>";
-    }
+    
 
     echo $saves->get_likes($post_id, $mysqli);
-    echo "Likes </div></div>";
+    echo "<button class='text-pink-500 background-transparent font-bold uppercase outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150' type='button'>
+<i class='fas fa-heart'></i>
+</button>Likes</div> </div>";
 
     
 }
