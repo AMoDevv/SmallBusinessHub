@@ -132,7 +132,7 @@ usort($out, function ($a,$b) {
 </head>
 
 <body>
-<nav class="bg-gradient-to-r from-blue-700 to-blue-800 shadow-2xl"> 
+<nav class="bg-gray-900 shadow-2xl"> 
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -143,7 +143,7 @@ usort($out, function ($a,$b) {
           <div class="flex space-x-4 ">
           <form id='search' action="search.php" method="GET">
                         <?php echo  '<input name="q" type="text" class=" h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business..." value="'.$search_term.'">' ?>
-                        <button type="submit"class=" p-1 rounded bg-blue-400 hover:bg-blue-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
+                        <button type="submit"class=" p-1 rounded bg-blue-700 hover:bg-blue-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
                     </form>
             <!-- <input type="text" class="h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">         
               <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> 

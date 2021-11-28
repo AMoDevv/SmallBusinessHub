@@ -84,26 +84,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
-<body class="bg-pink-200">
-<div class="min-h-screen bg-pink-200 flex justify-center items-center">
+<body class="bg-blue-200">
+<div class="min-h-screen bg-blue-200 flex justify-center items-center">
     <div class="w-1/5 bg-white rounded-3xl mx-auto overflow-hidden shadow-xl p-5 pt-8">
-        <h2 class="text-4xl font-semibold text-gray-900">Reset Password</h2>
+        <h2 class="text-5xl font-semibold text-gray-900 pb-12">Reset Password</h2>
         <br>
         <p>Please fill out this form to reset your password.</p>
         <br>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
                 <label>New Password</label>
-                <input type="password" name="new_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-pink-600" value="<?php echo $new_password; ?>">
+                <input type="password" name="new_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600" value="<?php echo $new_password; ?>">
                 <span class="help-block"><?php echo $new_password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-pink-600 ">
+                <input type="password" name="confirm_password" class="form-control h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600 ">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary btn btn-primary mt-20 px-4 py-2 rounded bg-pink-500 hover:bg-pink-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-pink-500 focus:ring-opacity-80 cursor-pointer" value="Submit">
+            <div class="form-group mt-4">
+                <input type="submit" class="btn btn-primary btn btn-primary px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" value="Submit">
                 <a class="btn btn-link" href="search.php">Cancel</a>
             </div>
         </form>
