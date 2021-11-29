@@ -123,6 +123,7 @@ class Posts
         }
     }
 
+    // Get all the posts for a specific business
     public function postsForBusiness(int $id, $mysqli)
     {
         // attempt SELECT query execution
@@ -189,6 +190,7 @@ class Posts
         }
     }
 
+    // set the current number of saves on a post
     public function update_save(int $id, $saves, $mysqli)
     {
 

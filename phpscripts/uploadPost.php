@@ -1,4 +1,5 @@
 <?php
+// This is the script used to create a post
 session_start();
 
 // Include config file

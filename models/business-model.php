@@ -374,6 +374,8 @@ class BusinessInformation
         }
     }
 
+    // Used to get the names of the businesses that fit within the categories allowed
+    // Used in searching
     public function getBusinessNames($mysqli, $tags = array())
     {
         $sql = "SELECT business_id, business_name, image
@@ -384,6 +386,7 @@ class BusinessInformation
         if ($result = $mysqli -> query($sql)) {
             // $obj = $result -> fetch_object();
             while ($row = $result -> fetch_object()) {
+                // Find all tags and respective ID
                 $sql_cats = "SELECT * FROM business_category WHERE business_id = '$row->business_id'";
                 $result_cats = $mysqli->query($sql_cats);
                 $categories = array();
@@ -392,12 +395,15 @@ class BusinessInformation
                 }
                 
                 foreach ($tags as $tag) {
+                    // If business is part of category
+                    // Return it
                     if(in_array($tag, $categories)) {
                         array_push($out, $row);
                         break;
                     }
                 }
                 
+                // If no categories are sent
                 if(count($tags) == 0) {
                     array_push($out, $row);
                 }

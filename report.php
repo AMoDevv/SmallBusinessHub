@@ -1,5 +1,6 @@
 
 <?php 
+    // This page creates the report of engagement.
     session_start();
 
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){

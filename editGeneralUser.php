@@ -1,4 +1,6 @@
 <?php
+// The page to edit a business
+
 //Initalize session
 session_start();
 // Include the database configuration file  

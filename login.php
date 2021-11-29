@@ -1,4 +1,6 @@
 <?php
+// This is the login page to log in users
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: profile.php");
@@ -125,6 +127,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
+ <!-- Begins the html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,7 +145,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <div class="min-h-screen min-w-screen bg-blue-900 flex justify-center items-center">
     <div class="p-8 flex-1"> 
       <div class="w-1/2 bg-white p-10 rounded-3xl mx-auto overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div class="">
+        <!-- GIF Image -->
+      <div class="">
         <div class="grid-item col-span-1">
             <div id="logo">
                 <img src="images/logo.png" class="justify-self-auto" width="150px">
@@ -155,6 +159,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
          </div>
     </div>
+    <!-- Form -->
         <div class="grid-item px-10 pt-4 pb-8 bg-white rounded-tr-4xl">
          <h2 class="text-2xl font-semibold text-gray-900">Welcome Back!</h2>
          <p>Please enter your credentials to login.</p>

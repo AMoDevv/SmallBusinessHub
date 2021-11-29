@@ -119,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="wrapper br grid-container">
 
+    <!-- GIF -->
     <div class="grid-item"> 
         <div id="logo">
                 <img src="images/logo.png" width="150px">
@@ -128,6 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+    <!-- Form -->
     <div class="grid-item">
         <h2 class="text-4xl">Get started, it's easy</h2>
         <p>To sign up, please fill this form to create an account.</p>

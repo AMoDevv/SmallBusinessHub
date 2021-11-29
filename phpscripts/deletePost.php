@@ -1,6 +1,6 @@
 
 <?php
-
+// This php script deletes a post
 chdir("..");
 session_start();
 
@@ -33,11 +33,15 @@ function delete($post_id, $mysqli){
     $posts = new Posts();
     $save = new Saves();
     $tags = new Tags();
+    // Deletes the saves
     $save->deletePostsDeleteSaves($post_id, $mysqli);
+    // Deletes the tags
     $tags->deletePostsDeleteTags($post_id, $mysqli);
+    // Deletes the post
     $posts->delete($post_id, $mysqli);
-
     
+    
+    // Redirect
     header("location: ../profile.php");
     exit;
 }

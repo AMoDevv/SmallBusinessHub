@@ -152,7 +152,7 @@ class Saves
         }
     }
 
-    
+    // When deleting a post, it is important to delete all saves
     public function deletePostsDeleteSaves(int $post_id, $mysqli)
     {
         // attempt insert query execution
@@ -169,6 +169,7 @@ class Saves
         }
     }
 
+    // Check if that user has liked the post.
     public function save_exists(int $post_id, int $general_user_id, $mysqli){
         // attempt insert query execution
         $sql = "SELECT $post_id FROM saves

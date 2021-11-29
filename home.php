@@ -1,4 +1,6 @@
 <?php
+// This page is depracated
+
 //Initalize session
 session_start();
 use App\Models\BusinessInformation;

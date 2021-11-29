@@ -1,4 +1,6 @@
 <?php
+// The page that shows when you click on a post
+
 //Initalize session
 
 
@@ -73,6 +75,7 @@ $accountType = $_SESSION["account_type"];
                     // description,
                     // subscription_id
 
+                    // Retrieve and Display the Business
                     $business = $businesses->readByPostID($get_id, $mysqli);
                     echo '<div class="h-40 w-40 flex justify-center items-center mr-40"><img src="data:image/jpg;base64,' . base64_encode($business->image) . '" /></div>';
                     echo "<a href='business.php?q=$business->business_id'><h1 class='text-4xl'>$business->business_name</h1></a>";
@@ -82,6 +85,7 @@ $accountType = $_SESSION["account_type"];
 
                     echo "</div>";
                     
+                    // Retrieve and display the post
                     echo "<div id='post_$get_id' class='col-span-2 text-2xl relative'>";
                     $image = get_post($get_id, $mysqli);
 

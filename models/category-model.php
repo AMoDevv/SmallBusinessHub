@@ -70,9 +70,12 @@ class Category
         }
     }
 
+    // Get all the categories that are currently available
     public function getUniqueCategory($mysqli)
     {
         // attempt SELECT query execution
+        // This Query is long in order to receive the last image the
+        // category received to show on the search page
         $sql = "SELECT bc.category_id as id, c.name as name, b.photo as photo
         FROM business_category as bc
         JOIN category as c
@@ -99,6 +102,7 @@ class Category
         }
     }
     
+    // Find all the posts under a category
     public function getPostsByCategoryID($id,$mysqli)
     {
         // attempt SELECT query execution
