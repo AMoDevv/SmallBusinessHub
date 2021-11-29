@@ -19,6 +19,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
+if (isset($_SESSION["business_id"])) {
+    header("location: profile.php");
+    exit;
+}
+
 // Initialize Search Term
 $search_term = "";
 
