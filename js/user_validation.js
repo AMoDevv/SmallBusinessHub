@@ -252,11 +252,15 @@ form.addEventListener('submit', function (e) {
         isEmailValid &&
         isInterestValid &&
         isFileValid;
-
+    
+    err=document.getElementById("error2");
     // submit to the server if the form is valid
     if (isFormValid) {
+        err.innerHTML = "";
         this.submit();
     }
+    
+      err.innerHTML = "Please go over the form and fix your issues.";
 });
 //validates file
 const checkFile = ()  => {
