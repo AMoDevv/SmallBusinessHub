@@ -271,7 +271,8 @@ session_start();
           <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
 
           <input type="submit" value="Save" class="action-button">
-
+          <br><span id="error2" style="color:red; font-size:16px;"></span>
+          
           <!--<input type="submit" name="submit" class="submit action-button" value="Save"/>-->
         </fieldset>
       </form>
