@@ -131,7 +131,7 @@ usort($out, function ($a,$b) {
           <div class="flex space-x-4 ">
           <form id='search' action="search.php" method="GET">
                         <?php echo  '<input name="q" type="text" class=" h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business..." value="'.$search_term.'">' ?>
-                        <button type="submit"class=" p-1 rounded bg-blue-700 hover:bg-blue-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
+                        <button type="submit"class=" p-1 rounded bg-yellow-400 hover:bg-yellow-200 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-gray-900 focus:ring-opacity-80 cursor-pointer" >Search</button>
                     </form>
             <!-- <input type="text" class="h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">         
               <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> 
@@ -277,7 +277,7 @@ usort($out, function ($a,$b) {
 
                             $image = "data:image/jpg;base64,".base64_encode($output->photo);
                             echo "   
-                            <div class='shadow-2xl p-3 cols-span-1'>
+                            <div class='shadow-xl p-3 cols-span-1'>
                             <a href='/SmallBusinessHub/$output->type.php?q=$output->id'>
                               <div class='bg-gray-200 gap-y-10 gap-x-6 rounded-md overflow-hidden group-hover:opacity-75'>
                                 <img src='$image' alt='pic' class='object-contain w-full h-full object-center lg:w-full lg:h-full'>

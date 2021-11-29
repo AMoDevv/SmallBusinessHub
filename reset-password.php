@@ -84,9 +84,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
-<body class="bg-blue-200">
-<div class="min-h-screen bg-blue-200 flex justify-center items-center">
-    <div class="w-1/5 bg-white rounded-3xl mx-auto overflow-hidden shadow-xl p-5 pt-8">
+<body class="bg-blue-700">
+<div class="min-h-screen bg-gray-900 flex justify-center items-center">
+    <div class="bg-white rounded-3xl mx-2/5 overflow-hidden shadow-xl grid grid-cols-2">
+    <div class="grid-item col-span-1">
+
+        <div id="login-gif">
+            <img src= "images/resetpass.jpg"  width="350px"height= "200px">
+        </div>
+</div>
+        <div class="px-20">
+        <div id="logo">
+                <img src="images/logo.png" class="justify-self-auto" width="150px">
+            </div>  
         <h2 class="text-5xl font-semibold text-gray-900 pb-12">Reset Password</h2>
         <br>
         <p>Please fill out this form to reset your password.</p>
@@ -103,11 +113,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group mt-4">
-                <input type="submit" class="btn btn-primary btn btn-primary px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" value="Submit">
+                <input type="submit" class="btn btn-primary btn btn-primary px-4 py-2 rounded bg-blue-900 hover:bg-blue-700 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" value="Submit">
                 <a class="btn btn-link" href="search.php">Cancel</a>
             </div>
         </form>
     </div>
+</div>
 </div>    
 </body>
 </html>

@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-pink-200">
+<body class="bg-blue-200">
 
 <div class="wrapper br grid-container">
 
@@ -157,8 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
    
             <div class="form-group">
-                <input type="submit" class="btn btn-primary bg-pink-400" value="Submit">
-                <input type="reset" class="btn btn-primary bg-pink-400" value="Reset">
+                <input type="submit" class="btn btn-primary hover:bg-yellow-300 bg-yellow-500" value="Submit">
+                <input type="reset" class="btn btn-primary hover:bg-yellow-300 bg-yellow-500" value="Reset">
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
             

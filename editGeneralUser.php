@@ -30,7 +30,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <link rel="stylesheet" href="./css/edit-general-user.css">
 </head>
 
-<body class="bg-blue-200">
+<body class="bg-gray-900">
   <!--Query Database and get user information to display in the fields.
         For the photo, display the photo in a nice size and add a button to change profile photo.
         Rest of data can just be filled out in fields ready to be edited.
@@ -108,7 +108,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </div>
                      
                     <div class='row mt-3'>
-                    <input type='button' value='Save' class=' mt-20 px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' id='editProfileBtn' name='editProfileBtn'>
+                    <input type='button' value='Save' class=' mt-20 px-4 py-2 rounded bg-blue-900 hover:bg-blue-700 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' id='editProfileBtn' name='editProfileBtn'>
                       
                     </div>
                     <div class='text-blue'>

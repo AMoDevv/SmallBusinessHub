@@ -208,7 +208,7 @@ if ($result->num_rows == 1) {
 
             <!-- Start of posts grid section -->
             <!-- <div class="container"> -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 pt-12 px-60 bg-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-12 px-60 bg-gray-100">
                     <?php
                             //need to get the current user's ID from Session array
                             $id = $_SESSION["account_id"];
@@ -234,7 +234,7 @@ if ($result->num_rows == 1) {
                                 $saves = new Saves();
                                 
                                 foreach($posts as $post){
-                                    echo "<div class='group relative shadow-2xl h-4/5'> <div id='post_$post->post_id'  class='object-contain w-full h-full object-center bg-white aspect-w-1 aspect-h-1 rounded-md overflow-hidden'> ";
+                                    echo "<div class='group relative shadow-2xl h-4/5'> <div id='post_$post->post_id'  class='object-contain w-full h-full object-center bg-white rounded-md overflow-hidden'> ";
 
                                     echo get_post($post->post_id, $mysqli);
 

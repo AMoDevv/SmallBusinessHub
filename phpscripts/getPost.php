@@ -22,7 +22,7 @@ function get_post($post_id, $mysqli){
     $saves = new Saves();
 
     $image = "data:image/jpg;base64,".base64_encode($post->getPhoto());
-    echo "<div class='grid grid-rows-6 p-4 mb-48'>
+    echo "<div class='grid grid-rows-6 p-4 mb-24'>
             <div class='group relative row-span-4 justify-items-center'>  
                 <img src='$image' class='modal-open group-hover:opacity-75 inline h-48 object-contain object-center' data-id='$post_id'>
             </div>
