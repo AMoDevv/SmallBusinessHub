@@ -118,6 +118,22 @@ if ($result->num_rows == 1) {
                         ?>
               
                 </a>
+                  <?php  
+                            $id = $_SESSION["account_id"];
+
+                            $accountType = $_SESSION["account_type"];
+
+                            if ($accountType == 2) {
+                                $sql = "SELECT image FROM business_information WHERE account_id = $id";
+                                if ($result = $mysqli->query($sql)) {
+                                    $row = $result->fetch_assoc();
+                                    echo'<img class="rounded-full h-8 w-8" src="data:image/jpg;base64,' . base64_encode($row['image']) . '" />';
+                                } else {
+                                    echo mysqli_error($mysqli);
+                                }
+                    
+                            }
+                                ?>
 
                 <div x-show="open"
             x-transition:enter.duration.100ms
@@ -125,23 +141,6 @@ if ($result->num_rows == 1) {
             class="absolute right-0 w-48 py-2 mt-2 bg-white bg-gray-100 rounded-md shadow-xl">
                 <div
                     class="block px-4 py-2 text-sm text-gray-300 font-bold text-gray-700">
-                  <?php  $id = $_SESSION["account_id"];
-
-                            $accountType = $_SESSION["account_type"];
-
-                            if ($accountType == 1) {
-                                $sql = "SELECT first_name, last_name FROM general_user_information WHERE account_id = $id";
-                                $result = $mysqli->query($sql);
-                                if ($result->num_rows == 1) {
-                                    $row = $result->fetch_assoc();
-                                    echo $row['first_name'];
-                                    echo '&nbsp;';
-                                    echo $row['last_name'];
-                                } else {
-                                    echo "error";
-                                }
-                            }
-                                ?>
                 </div>
                 <a href="editgeneraluser.php"
                     class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
