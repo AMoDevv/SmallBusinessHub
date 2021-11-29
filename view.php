@@ -121,7 +121,7 @@ $accountType = $_SESSION["account_type"];
 
                     echo "</div> </div>";
 
-                    echo "<div class='group col-span-2 justify-items-center m-auto object-none h-full w-full'>  
+                    echo "<div class='group min-h-full col-span-2 justify-items-center m-auto object-none h-full w-full'>  
                     <img src='$image' class='modal-open' data-id='$get_id'>
                     </div>";
 
