@@ -277,7 +277,7 @@ usort($out, function ($a,$b) {
                             $image = "data:image/jpg;base64,".base64_encode($output->photo);
                             echo "   
                             <div class='shadow-xl p-3 cols-span-1'>
-                            <a href='/SmallBusinessHub/$output->type.php?q=$output->id'>
+                            <a href='./$output->type.php?q=$output->id'>
                               <div class='gap-y-10 gap-x-6 rounded-md overflow-hidden h-4/5 group-hover:opacity-75'>
                                 <img src='$image' alt='pic' class='object-contain w-full h-full object-center lg:w-full lg:h-full'>
                               </div>

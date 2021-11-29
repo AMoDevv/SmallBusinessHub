@@ -72,7 +72,7 @@ if ($result->num_rows == 1) {
 }
 </style>
 
-<body class=" flex justify-center">
+<body class="justify-center">
 
 
     <!-- partial:index.partial.html -->
@@ -172,7 +172,7 @@ if ($result->num_rows == 1) {
     </div>
   </div> 
 </nav>
-<div class="c">
+<div class="c min-w-full ">
     <div class="flex justify-center bg-blue-700 items-center h-auto w-auto">
         
                     <div class="bg-blue-700 text-white flex justify-center p-16 px-80 grid grid-rows-1">

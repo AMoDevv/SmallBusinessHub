@@ -67,7 +67,7 @@ foreach ($interests as $interest) {
     if(mysqli_query($mysqli, $sql1))
     {
         echo nl2br("\nRecords added successfully to interest table.");
-         header("location: profile.php");
+         header("location: search.php");
     } else {
         echo $ans;
         echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
