@@ -119,7 +119,7 @@ CREATE TABLE `saves` (
   `save_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `general_user_id` int(11) NOT NULL ,
-  `DateCreated` DATETIME NOT NULL DEFAULT(GETDATE())
+  `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `tags` (
