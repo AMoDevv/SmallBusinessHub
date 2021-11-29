@@ -39,7 +39,8 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
 
 <head>
 <meta charset="UTF-8">
-    <title>CodePen - Instagram Profile Layout with CSS Grid &amp; Flexbox</title>
+    <title>Profile </title>
+    <link rel="icon" href="images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -82,7 +83,7 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
           <div class="flex space-x-4 ">
           <form id='search' action="search.php" method="GET">
                         <?php echo  '<input name="q" type="text" class=" h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">' ?>
-                        <button type="submit"class=" p-1 rounded bg-blue-700 hover:bg-blue-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
+                        <button type="submit"class=" p-1 rounded bg-yellow-500 hover:bg-yellow-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
                     </form>
             <!-- <input type="text" class="h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">         
               <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> 

@@ -269,7 +269,7 @@ usort($out, function ($a,$b) {
 </div>
 <!--col2-->
 
-    <div class="page-header col-span-11 pr-20">
+    <div class="page-header col-span-11 pr-20 text-center">
         
                     <div class='grid lg:grid-cols-5 md:grid-cols-3 md:grid-cols-1 gap-4'>
                      <?php
@@ -279,19 +279,17 @@ usort($out, function ($a,$b) {
                             echo "   
                             <div class='shadow-xl p-3 cols-span-1'>
                             <a href='/SmallBusinessHub/$output->type.php?q=$output->id'>
-                              <div class='bg-gray-200 gap-y-10 gap-x-6 rounded-md overflow-hidden group-hover:opacity-75'>
+                              <div class='gap-y-10 gap-x-6 rounded-md overflow-hidden h-4/5 group-hover:opacity-75'>
                                 <img src='$image' alt='pic' class='object-contain w-full h-full object-center lg:w-full lg:h-full'>
                               </div>
                               <div class='mt-4 flex justify-between'>
                                 <div>
-                                  <h3 class='text-sm text-gray-700'>
-                                      <h1 class='font-bold' >$output->name</h1>
-                                    
+                                  <h3 class=' text-gray-700'>
+                                      <h1 class='font-bold' >$output->name</h1>                                    
                                   </h3>
-                                  </a>
-                                  <p class='mt-1 text-sm text-gray-500'>address</p>
+                                  
                                 </div>
-                                <p class='text-sm font-medium text-gray-900'>description</p>
+                                </a>
                             </div>                       
                             </div>
                             ";
