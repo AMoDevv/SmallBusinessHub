@@ -246,18 +246,39 @@ usort($out, function ($a,$b) {
                                     </label>";
                                 }       
                                 
-                                echo "<label class='inline-flex items-center mt-3'>";
-                                echo "<select form='search' name='cat[]' id='cat' multiple class='' style='height:150px;overflow: inherit;'>";
-                                echo "<option class='inline-flex items-center mt-3' value='1' ". (in_array('1', $filtered_cats) ? "selected" : "") ." >Health</option>";
-                                echo "<option value='2' ". (in_array('2', $filtered_cats) ? "selected" : "") ." >Entertainment</option>";
-                                echo "<option value='3' ". (in_array('3', $filtered_cats) ? "selected" : "") ." >Clothing</option>";
-                                echo "<option value='4' ". (in_array('4', $filtered_cats) ? "selected" : "") ." >Crafts</option>";
-                                echo "<option value='5' ". (in_array('5', $filtered_cats) ? "selected" : "") ." >Hobbies</option>";
-                                echo "<option value='6' ". (in_array('6', $filtered_cats) ? "selected" : "") ." >Electronics</option>";
-                                echo "</select>
-                                </label>
-                                ";
                                 
+                                echo '<h1 class="font-bold items-left"> Categories</h1>';
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='1' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('1', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Health</span>
+                                </label>";
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='2' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('2', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Entertainment</span>
+                                </label>";
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='3' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('3', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Clothing</span>
+                                </label>";
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='4' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('4', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Crafts</span>
+                                </label>";
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='5' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('5', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Hobbies</span>
+                                </label>";
+                                echo "
+                                <label class='inline-flex items-center mt-3'>
+                                <input form='search' type='checkbox' type='checkbox' name='cat[]' value='6' class='form-checkbox h-5 w-5 text-gray-600' ".(in_array('6', $filtered_cats) ? "checked" : "").">
+                                <span class='ml-2 text-gray-700'>Electronics</span>
+                                </label>";
+
                             ?>
             </div>
         </div>                        
