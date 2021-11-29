@@ -226,6 +226,18 @@ $business = $businesses->read((int)$_GET["q"], $mysqli);
                                     ?>
                                     </span>
                                 </p>
+                                    <?php
+
+                                    $sql = "SELECT instagram_url, facebook_url, twitter_url, website_url, email FROM business_information WHERE business_id = $id";
+                                    $result = $mysqli->query($sql);
+                                    $info = $result->fetch_object();
+
+                                    echo "<span class='text-xl p-8'><p>Instagram: <a target='_blank' href='$info->instagram_url'>$info->instagram_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Facebook: <a target='_blank' href='$info->facebook_url'>$info->facebook_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Twitter: <a target='_blank' href='$info->twitter_url'>$info->twitter_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Website: <a target='_blank' href='$info->website_url'>$info->website_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Email: <a target='_blank' href='$info->email'>$info->email</a></p></span>";
+                                    ?>
 
                         </div>
                     </div> 

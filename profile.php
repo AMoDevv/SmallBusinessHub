@@ -10,6 +10,7 @@ require_once "./models/posts-model.php";
 require_once "./models/saves-model.php";
 require_once "./phpscripts/getPost.php";
 
+use App\Models\BusinessInformation;
 use App\Models\Posts;
 use App\Models\Saves;
 
@@ -245,14 +246,14 @@ if ($result->num_rows == 1) {
                                         ?>
                                     </span>
                                     <br>
-                                    <span class="text-xl p-8">
+                                    <span class="text-xl p-8 a">
                                     <?php
 
                                     //need to get the current user's ID from Session array
                                     $id = $_SESSION["account_id"];
-
+                                    
                                     $accountType = $_SESSION["account_type"];
-
+                                    
                                     if ($accountType == 1) {
                                         echo '';
                                     } else if ($accountType == 2) {
@@ -265,20 +266,28 @@ if ($result->num_rows == 1) {
                                             echo "error";
                                         }
                                     }
+                                    
 
-
-
+                                    
                                     ?>
                                 
-                                    </span>
+                            </span>
+                            
+                        </p>
+                        <?php
 
-                                    <span class="text-xl p-8"><p>text</p></span>
-                                    <span class="text-xl p-8"><p>text</p></span>
-                                    <span class="text-xl p-8"><p>text</p></span>
-                                    <span class="text-xl p-8"><p>text</p></span>
-                                    <span class="text-xl p-8"><p>text</p></span>
+                                    $id = $_SESSION["business_id"];
+                                    $sql = "SELECT instagram_url, facebook_url, twitter_url, website_url, email FROM business_information WHERE business_id = $id";
+                                    $result = $mysqli->query($sql);
+                                    $info = $result->fetch_object();
 
-                                </p>
+                                    echo "<span class='text-xl p-8'><p>Instagram: <a target='_blank' href='$info->instagram_url'>$info->instagram_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Facebook: <a target='_blank' href='$info->facebook_url'>$info->facebook_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Twitter: <a target='_blank' href='$info->twitter_url'>$info->twitter_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Website: <a target='_blank' href='$info->website_url'>$info->website_url</a></p></span>";
+                                    echo "<span class='text-xl p-8'><p>Email: <a target='_blank' href='$info->email'>$info->email</a></p></span>";
+                                    ?>
+
                                 
 
                         </div>
