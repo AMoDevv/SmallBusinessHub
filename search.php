@@ -27,6 +27,10 @@ if (isset($_GET["q"])){
 $search_term = strtolower($search_term);
 
 
+$filtered_cats = array();
+if(isset($_GET['cat'])) {
+    $filtered_cats = $_GET['cat'];
+}
 
 $business_filter = false;
 $tags_filter = false;
@@ -43,9 +47,6 @@ if(!(isset($_GET['business']) || isset($_GET['tags']) || isset($_GET['categories
     if (isset($_GET['tags'])) {
         $tags_filter = true;
     } 
-    if (isset($_GET['categories'])) {
-        $categories_filter = true;
-    }
 }
 
 
@@ -56,6 +57,9 @@ $tag_rat = 0.0;
 $cat_rat = 0.0;
 $bus_rat = 0.0;
 
+function inCat() {
+
+}
 
 if( $no_filter || $tags_filter ){
     // TAGS
@@ -66,24 +70,8 @@ if( $no_filter || $tags_filter ){
         // output data of each row
         $tag_name = strtolower($tag->tag);
         $rat = 1 - levenshtein($tag_name, $search_term) / max(strlen($search_term), strlen($tag_name));
-        if($rat >= $tag_rat) {
+        if($rat >= $tag_rat ) {
             array_push($out, new Result($tag->tag, $rat, "Tag", $tag->tag, $tag->photo));
-        }
-    }
-}
-
-
-if( $no_filter || $categories_filter ){
-    // Categories
-    $cat_search = new Category();
-    $cat_result = $cat_search->getUniqueCategory($mysqli);
-    // Sort by tag match
-    foreach ($cat_result as $cat) {
-        // output data of each row
-        $tag = strtolower($cat->name);
-        $rat = 1 - levenshtein($tag, $search_term) / max(strlen($search_term), strlen($tag));
-        if($rat >= $cat_rat) {
-            array_push($out, new Result($cat->name, $rat, "Category", $cat->id, $cat->photo));
         }
     }
 }
@@ -92,7 +80,7 @@ if( $no_filter || $categories_filter ){
 if( $no_filter || $business_filter ){
     // Business
     $business_search = new BusinessInformation();
-    $business_result = $business_search->getBusinessNames($mysqli);
+    $business_result = $business_search->getBusinessNames($mysqli, $filtered_cats);
     // Sort by tag match
     foreach ($business_result as $business) {
         // output data of each row
@@ -258,19 +246,21 @@ usort($out, function ($a,$b) {
                                     <span class='ml-2 text-gray-700'>tags</span>
                                     </label>";
                                 }       
-
-                                if( $categories_filter ) {
-                                    echo "
-                                    <label class='inline-flex items-center mt-3'>
-                                    <input form='search' type='checkbox' type='checkbox' name='categories' value='true' class='form-checkbox h-5 w-5 text-gray-600' checked >
-                                    <span class='ml-2 text-gray-700'>Categories</span>
-                                    </label>";
-                                } else {
-                                    echo "<label class='inline-flex items-center mt-3'>
-                                    <input form='search' type='checkbox' type='checkbox' name='categories' value='false' class='form-checkbox h-5 w-5 text-gray-600' >
-                                    <span class='ml-2 text-gray-700'>Categories</span>
-                                    </label>";
-                                }
+                                
+                                echo "<label class='inline-flex items-center mt-3'>
+                                <span class='ml-2 text-gray-700'>Categories</span>
+                                ";
+                                echo "<select form='search' name='cat[]' id='cat' multiple class='' style='height:150px;overflow: inherit;'>";
+                                echo "<option value='1' ". (in_array('1', $filtered_cats) ? "selected" : "") ." >Health</option>";
+                                echo "<option value='2' ". (in_array('2', $filtered_cats) ? "selected" : "") ." >Entertainment</option>";
+                                echo "<option value='3' ". (in_array('3', $filtered_cats) ? "selected" : "") ." >Clothing</option>";
+                                echo "<option value='4' ". (in_array('4', $filtered_cats) ? "selected" : "") ." >Crafts</option>";
+                                echo "<option value='5' ". (in_array('5', $filtered_cats) ? "selected" : "") ." >Hobbies</option>";
+                                echo "<option value='6' ". (in_array('6', $filtered_cats) ? "selected" : "") ." >Electronics</option>";
+                                echo "</select>
+                                </label>
+                                ";
+                                
                             ?>
             </div>
         </div>                        

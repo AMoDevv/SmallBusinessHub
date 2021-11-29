@@ -374,7 +374,7 @@ class BusinessInformation
         }
     }
 
-    public function getBusinessNames($mysqli)
+    public function getBusinessNames($mysqli, $tags = array())
     {
         $sql = "SELECT business_id, business_name, image
         FROM business_information 
@@ -384,7 +384,23 @@ class BusinessInformation
         if ($result = $mysqli -> query($sql)) {
             // $obj = $result -> fetch_object();
             while ($row = $result -> fetch_object()) {
-                array_push($out, $row);
+                $sql_cats = "SELECT * FROM business_category WHERE business_id = '$row->business_id'";
+                $result_cats = $mysqli->query($sql_cats);
+                $categories = array();
+                while($row_cat = $result_cats->fetch_object()) {
+                    array_push($categories, $row_cat->category_id);
+                }
+                
+                foreach ($tags as $tag) {
+                    if(in_array($tag, $categories)) {
+                        array_push($out, $row);
+                        break;
+                    }
+                }
+                
+                if(count($tags) == 0) {
+                    array_push($out, $row);
+                }
             }
             $result -> free_result();
             return $out;   

@@ -170,6 +170,23 @@ class Tags
             return False;
         }
     }
+
+    
+    public function deletePostsDeleteTags(int $post_id, $mysqli)
+    {
+        // attempt insert query execution
+        $sql = "DELETE FROM tags
+        WHERE post_id = '$post_id'
+        ";
+
+        if (mysqli_query($mysqli, $sql)) {
+            echo nl2br("\nRecords successfully removed to tags table.");
+            return True;
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
 }
 
 ?>

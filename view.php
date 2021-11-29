@@ -76,6 +76,9 @@ $accountType = $_SESSION["account_type"];
                     $business = $businesses->readByPostID($get_id, $mysqli);
                     echo '<div class="h-40 w-40 flex justify-center items-center mr-40"><img src="data:image/jpg;base64,' . base64_encode($business->image) . '" /></div>';
                     echo "<a href='business.php?q=$business->business_id'><h1 class='text-4xl'>$business->business_name</h1></a>";
+                    if(isset($_SESSION['business_id']) && $business->business_id == $_SESSION['business_id']) {
+                        echo "<form method='POST' action='./phpscripts/deletePost.php'><input name='post_id' style='display: none' value='$get_id' /><button>Delete</button></form>";
+                    }
 
                     echo "</div>";
                     

@@ -152,6 +152,23 @@ class Saves
         }
     }
 
+    
+    public function deletePostsDeleteSaves(int $post_id, $mysqli)
+    {
+        // attempt insert query execution
+        $sql = "DELETE FROM saves
+        WHERE post_id = '$post_id'
+        ";
+
+        if (mysqli_query($mysqli, $sql)) {
+            echo nl2br("\nRecords successfully removed to saves table.");
+            return True;
+        } else {
+            echo nl2br("\nERROR: Failed to execute $sql. " . mysqli_error($mysqli));
+            return False;
+        }
+    }
+
     public function save_exists(int $post_id, int $general_user_id, $mysqli){
         // attempt insert query execution
         $sql = "SELECT $post_id FROM saves
