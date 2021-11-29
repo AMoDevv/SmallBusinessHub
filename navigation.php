@@ -1,4 +1,5 @@
 <?php
+// This is the navigation that appears on most pages
 require_once "config.php";
 ?>
 <!DOCTYPE html>

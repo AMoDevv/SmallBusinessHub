@@ -70,6 +70,7 @@ class Tags
         }
     }
 
+    // Get all tags
     public function getUniqueTags($mysqli)
     {
         // attempt SELECT query execution
@@ -94,6 +95,7 @@ class Tags
         }
     }
     
+    // Get the tags for a specific post
     public function getPostTags(int $id,$mysqli)
     {
         // attempt SELECT query execution
@@ -115,6 +117,7 @@ class Tags
         }
     }
 
+    // Search for all posts that have a tag.
     public function getPostsByTag($tag,$mysqli)
     {
         // attempt SELECT query execution
@@ -171,7 +174,8 @@ class Tags
         }
     }
 
-    
+    // It is important to delete all tags from a post when
+    // deleting the post 
     public function deletePostsDeleteTags(int $post_id, $mysqli)
     {
         // attempt insert query execution

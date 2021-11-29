@@ -1,4 +1,5 @@
 <?php
+// This file saves edits to the business profile
 session_start();
 
 // Include config file

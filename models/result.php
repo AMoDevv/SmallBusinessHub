@@ -1,4 +1,7 @@
 <?php
+// This class is used for the search page
+// Val is the match percent
+// Along with the other necessary data to put into the search page
 class Result {
     public $name;
     public $val;

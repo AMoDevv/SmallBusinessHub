@@ -1,5 +1,6 @@
 
 <?php
+// This is the script used to save a like or unlike request
 
 chdir("..");
 session_start();

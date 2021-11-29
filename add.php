@@ -1,4 +1,5 @@
 <?php
+// This is the page to add a new post
 //Initalize session
 session_start();
 // Include the database configuration file  
@@ -62,6 +63,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         </div>
     </form>
 </body>
+<!-- The script used to save the files -->
 <script>
     const fileName = document.querySelector("#fileName");
     function updateFileName(object){

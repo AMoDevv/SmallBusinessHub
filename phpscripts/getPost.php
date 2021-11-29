@@ -1,6 +1,7 @@
 
 <?php
-
+// This script returns the html to print out a post
+// It is used in business, tag, and category pages
 
 use App\Models\Posts;
 use App\Models\Saves;

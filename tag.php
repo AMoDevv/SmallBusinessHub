@@ -1,4 +1,6 @@
 <?php
+// The page to show posts based on tags
+
 //Initialize session
 session_start();
 

@@ -63,6 +63,8 @@ if (!isset($_GET["q"])) {
 </style>
 
 <body class="bg-gray-100">
+  
+<!-- Beginning of Navbar -->
 <nav class="bg-gray-900 shadow-2xl"> 
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
@@ -151,6 +153,7 @@ if (!isset($_GET["q"])) {
     </div>
   </div> 
 </nav>
+<!-- Beginning of Header -->
 <div class="c">
     <div class="flex justify-center bg-blue-700 items-center h-auto w-auto">
         

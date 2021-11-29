@@ -19,6 +19,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
+// Initialize Search Term
 $search_term = "";
 
 if (isset($_GET["q"])){
@@ -26,7 +27,7 @@ if (isset($_GET["q"])){
 }
 $search_term = strtolower($search_term);
 
-
+// Initialize Business Categories
 $filtered_cats = array();
 if(isset($_GET['cat'])) {
     $filtered_cats = $_GET['cat'];
@@ -37,7 +38,7 @@ $tags_filter = false;
 $categories_filter = false;
 $no_filter = false;
 
-
+// Filters
 if(!(isset($_GET['business']) || isset($_GET['tags']) || isset($_GET['categories']))) {
     $no_filter = true;
 } else {
@@ -51,15 +52,11 @@ if(!(isset($_GET['business']) || isset($_GET['tags']) || isset($_GET['categories
 
 
 
-
+// Ratios
 $out = array();
 $tag_rat = 0.0;
 $cat_rat = 0.0;
 $bus_rat = 0.0;
-
-function inCat() {
-
-}
 
 if( $no_filter || $tags_filter ){
     // TAGS
@@ -93,6 +90,7 @@ if( $no_filter || $business_filter ){
     }
 }
 
+// Sort results
 usort($out, function ($a,$b) {
     return $a->getVal()<$b->getVal();
 });
@@ -120,6 +118,7 @@ usort($out, function ($a,$b) {
 </head>
 
 <body>
+    <!-- Navigation -->
 <nav class="bg-gray-900 shadow-2xl"> 
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
