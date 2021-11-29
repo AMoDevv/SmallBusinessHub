@@ -151,6 +151,14 @@ if ($result->num_rows == 1) {
                     class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
                     Reset Password
                 </a>
+                <a href="report.php" target="_blank"
+                    class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
+                    Reports
+                </a>
+                <a href="add.php"
+                    class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
+                    New Post
+                </a>
                 <a href="logout.php"
                     class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">
                     Logout

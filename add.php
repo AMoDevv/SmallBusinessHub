@@ -3,7 +3,6 @@
 session_start();
 // Include the database configuration file  
 require_once 'config.php';
-require_once "navigation.php";
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -40,7 +39,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </style>
 </head>
 
-<body class="bg-blue-200">
+<body class="bg-gray-900">
     <div class="alert alert-danger" role="alert" style="display: none; margin-bottom: 0px;" id="generalAlert">
             Please ensure that all fields are filled out and a picture included to post.
         </div>
