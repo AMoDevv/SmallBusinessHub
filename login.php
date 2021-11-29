@@ -162,12 +162,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                     <label class="font-bold">Username</label>
                     <input type="text" name="username" class="form-control peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600" value="<?php echo $username; ?>">
-                    <span class="help-block"><?php echo $username_err; ?></span>
+                    <span class="help-block text-red-500"><?php echo $username_err; ?></span>
                 </div>    
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <label class="font-bold">Password</label>
                     <input type="password" name="password" class="form-control peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600">
-                    <span class="help-block"><?php echo $password_err; ?></span>
+                    <span class="help-block text-red-500"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary mt-20 px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" value="Login">

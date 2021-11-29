@@ -106,7 +106,7 @@ $accountType = $_SESSION["account_type"];
                         }
                         
                         echo $saves->get_likes($post_id, $mysqli);
-                        echo "<button class='text-pink-500 background-transparent font-bold uppercase outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150' type='button'
+                        echo "<button class='text-blue-500 background-transparent font-bold uppercase outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150' type='button'
                         >
                         <i class='fas fa-heart'></i>
                         </button>Likes</div>";
