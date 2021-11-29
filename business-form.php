@@ -63,7 +63,7 @@ session_start();
 
           <div class="form-field">
             <br>
-            <label class="l" style="color: #db2777;">
+            <label class="l" style="color: #2563EB;">
               <u>Address Details</u>
             </label> <br> <br>
             <label for="address_street" class="l">Address Street:</label>
@@ -99,7 +99,7 @@ session_start();
 
           <div class="form-field">
             <br>
-            <label class="l" style="color: #db2777;">
+            <label class="l" style="color: #2563EB;">
               <u>Social Media Links</u>
             </label> <br> <br>
             <label for="twitter" class="l">Twitter URL:</label>
@@ -134,7 +134,7 @@ session_start();
           <small id="err" style="color:red;"></small>
           <div class="container">
 
-            <div class="row">
+            <div class="row" style="padding-left: 250px;">
 
               <label class="lb">
                 <input type="checkbox" name="category[]" id="health" value='1' />
@@ -153,7 +153,7 @@ session_start();
               </label>
             </div>
 
-            <div class="row">
+            <div class="row" style="padding-left: 250px;">
               <label class="lb">
                 <input type="checkbox" name="category[]" id="clothing" value='3' />
                 <div class="icon-box">
@@ -172,7 +172,7 @@ session_start();
               </label>
             </div>
 
-            <div class="row">
+            <div class="row"style="padding-left: 250px;">
               <label class="lb">
                 <input type="checkbox" name="category[]" id="hobbies" value='5' />
                 <div class="icon-box">
