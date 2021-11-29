@@ -43,7 +43,8 @@ if ($result->num_rows == 1) {
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Instagram Profile Layout with CSS Grid &amp; Flexbox</title>
+    <title>Profile</title>
+    <link rel="icon" href="images/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
