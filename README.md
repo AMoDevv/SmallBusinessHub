@@ -1,7 +1,7 @@
 Advanced Web Final Project
 Group 2 - Viviannie De La Fuente, Bidair Gonzalez, and Alain Morris
 
-Key Notes:
+How to Deploy the System
 1. Install xampp.
 2. Download folder, smallbusiness hub, on github and place it within the folder, htdocs, found within your xampp folder.
 3. Open the xampp control panel and  click 'Config' next to the module, MySQL.
