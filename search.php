@@ -246,11 +246,9 @@ usort($out, function ($a,$b) {
                                     </label>";
                                 }       
                                 
-                                echo "<label class='inline-flex items-center mt-3'>
-                                <span class='ml-2 text-gray-700'>Categories</span>
-                                ";
+                                echo "<label class='inline-flex items-center mt-3'>";
                                 echo "<select form='search' name='cat[]' id='cat' multiple class='' style='height:150px;overflow: inherit;'>";
-                                echo "<option value='1' ". (in_array('1', $filtered_cats) ? "selected" : "") ." >Health</option>";
+                                echo "<option class='inline-flex items-center mt-3' value='1' ". (in_array('1', $filtered_cats) ? "selected" : "") ." >Health</option>";
                                 echo "<option value='2' ". (in_array('2', $filtered_cats) ? "selected" : "") ." >Entertainment</option>";
                                 echo "<option value='3' ". (in_array('3', $filtered_cats) ? "selected" : "") ." >Clothing</option>";
                                 echo "<option value='4' ". (in_array('4', $filtered_cats) ? "selected" : "") ." >Crafts</option>";

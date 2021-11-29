@@ -49,6 +49,7 @@ if ($result->num_rows == 1) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 
   <style>
     .modal {
@@ -82,14 +83,11 @@ if ($result->num_rows == 1) {
     <div class="relative flex items-center justify-between h-16">
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <a class="flex-shrink-0 flex items-center" href="search.php">          
-          <img class="hidden lg:block h-8 w-auto" src="images/Home.png" alt="home">
+          
             </a>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4 ">
-          <form id='search' action="search.php" method="GET">
-                        <?php echo  '<input name="q" type="text" class=" h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">' ?>
-                        <button type="submit"class=" p-1 rounded bg-yellow-500 hover:bg-yellow-300 text-black font-semibold focus:outline-none focus:ring focus:ring-offset-2 border-2 border-gray-900 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer" >Search</button>
-                    </form>
+    
             <!-- <input type="text" class="h-8 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Search for a business...">         
               <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> 
               </div> -->
@@ -103,21 +101,8 @@ if ($result->num_rows == 1) {
             <a type="button" @mouseover="open = true" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <!-- User image needed-->
-              <?php
-                    //need to get the current user's ID from Session array
-                    $id = $_SESSION["account_id"];
-
-                    $accountType = $_SESSION["account_type"];
-
-                    if ($accountType == 1) {
-                        $sql = "SELECT image FROM general_user_information WHERE account_id = $id";
-                        $result = $mysqli->query($sql);
-                        $row = $result->fetch_assoc();
-                        echo'<img class="rounded-full h-8 w-8" src="data:image/jpg;base64,' . base64_encode($row['image']) . '" />';
-                    }
-                        ?>
               
-                </a>
+            
                   <?php  
                             $id = $_SESSION["account_id"];
 
@@ -134,6 +119,7 @@ if ($result->num_rows == 1) {
                     
                             }
                                 ?>
+                             </a>   
 
                 <div x-show="open"
             x-transition:enter.duration.100ms
