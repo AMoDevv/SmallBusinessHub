@@ -270,8 +270,17 @@ if ($result->num_rows == 1) {
 
 
                                     ?>
+                                
                                     </span>
+
+                                    <span class="text-xl p-8"><p>text</p></span>
+                                    <span class="text-xl p-8"><p>text</p></span>
+                                    <span class="text-xl p-8"><p>text</p></span>
+                                    <span class="text-xl p-8"><p>text</p></span>
+                                    <span class="text-xl p-8"><p>text</p></span>
+
                                 </p>
+                                
 
                         </div>
                     </div> 
