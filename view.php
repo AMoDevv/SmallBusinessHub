@@ -79,9 +79,6 @@ $accountType = $_SESSION["account_type"];
                     $business = $businesses->readByPostID($get_id, $mysqli);
                     echo '<div class="h-40 w-40 flex justify-center items-center mr-40"><img src="data:image/jpg;base64,' . base64_encode($business->image) . '" /></div>';
                     echo "<a href='business.php?q=$business->business_id'><h1 class='text-4xl'>$business->business_name</h1></a>";
-                    if(isset($_SESSION['business_id']) && $business->business_id == $_SESSION['business_id']) {
-                        echo "<form method='POST' action='./phpscripts/deletePost.php'><input name='post_id' style='display: none' value='$get_id' /><button>Delete</button></form>";
-                    }
 
                     echo "</div>";
                     
@@ -107,9 +104,9 @@ $accountType = $_SESSION["account_type"];
                         
                         
                         if($saves->save_exists($post_id, $_SESSION["account_id"], $mysqli)) {
-                            echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='true'>Unlike</button><div>";
+                            echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='true'>Unlike</button><div>";
                         } else {
-                            echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='false'>Like</button><div>";
+                            echo "<div class='row-span-1'> <button class='like_button px-4 py-2 rounded bg-blue-500 hover:bg-blue-400 text-white font-semibold text-center block focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 focus:ring-opacity-80 cursor-pointer' value='$post_id' value-liked='false'>Like</button><div>";
                         }
                         
                         echo $saves->get_likes($post_id, $mysqli);
@@ -128,8 +125,12 @@ $accountType = $_SESSION["account_type"];
                     echo "<div class='group min-h-full col-span-2 justify-items-center m-auto object-none h-full w-full'>  
                     <img src='$image' class='modal-open' data-id='$get_id'>
                     </div>";
+                    if(isset($_SESSION['business_id']) && $business->business_id == $_SESSION['business_id']) {
+                        echo "<form method='POST' action='./phpscripts/deletePost.php'><input name='post_id' style='display: none' value='$get_id' /><button class='px-4 py-2 rounded bg-red-500 hover:bg-red-400 text-white font-semibold text-center'>Delete Post</button></form>";
+                    }
 
             ?>
+            
             </div>
             </div>   
             <!-- End of posts grid section -->
